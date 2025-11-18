@@ -1,9 +1,5 @@
 """
 Threading and concurrency tests for protein sequence analysis.
-
-Tests focus on thread safety of core data processing functions.
-GUI threading tests are excluded as they require an active event loop
-incompatible with pytest's execution model.
 """
 
 import pytest
@@ -235,4 +231,5 @@ class TestMemoryInThreads:
 
 
 if __name__ == "__main__":
+
     pytest.main([__file__, "-v"])
