@@ -1,13 +1,5 @@
 """
 Unit tests for core protein sequence analysis functions.
-
-Tests cover:
-- Header detection in Excel files
-- Sequence cleaning and processing
-- DataFrame preparation
-- Pattern loading and validation
-- Position highlighting
-- Excel styling operations
 """
 
 import pytest
