@@ -1,12 +1,6 @@
 """
 Integration tests for protein sequence analysis pipeline.
 
-Tests cover:
-- End-to-end Excel processing
-- HMMER integration with mock databases
-- Pattern matching with highlighting
-- Domain scanning workflows
-- Multi-step pipeline operations
 """
 
 import multiprocessing
