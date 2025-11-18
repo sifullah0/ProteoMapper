@@ -1,12 +1,6 @@
 """
 Performance and stress tests for protein sequence analysis.
 
-Tests cover:
-- Large dataset processing
-- Memory efficiency
-- Execution time benchmarks
-- Scalability tests
-- Resource usage monitoring
 """
 
 import pytest
