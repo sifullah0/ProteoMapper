@@ -1,6 +1,5 @@
 # Development dependencies for testing and code quality
 # Install with: pip install -r requirements-dev.txt
-# /mnt/d/DomainAnalysis/github/requirements-dev.txt
 # Include base requirements
 -r requirements.txt
 
