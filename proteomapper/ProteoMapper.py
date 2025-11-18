@@ -1,4 +1,4 @@
-#final version with detailed timing and optimizations
+#main script of the this tool
 import subprocess
 import threading
 import time
@@ -1578,4 +1578,5 @@ def main():
     root.mainloop()
 
 if __name__ == "__main__":
+
     main()
