@@ -1,12 +1,6 @@
 """
 CI-friendly HMMER tests that use a hand-made 50-aa model.
 
-Coverage goal: every line inside
-    run_domain_scanning()
-    run_parallel_domain_scanning()
-    apply_domain_highlights()
-    create_domain_summary_sheet()
-without downloading Pfam-A.
 """
 
 import pytest
@@ -374,3 +368,4 @@ def test_evalue_filtering(toy_hmm_path, small_excel):
         evalue_str = hit.split("E-value:")[1].split("|")[0].strip()
         evalue = float(evalue_str)
         assert evalue <= 1e-20, f"Hit E-value {evalue} exceeds threshold 1e-20"
+
