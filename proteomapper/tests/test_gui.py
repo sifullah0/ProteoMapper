@@ -1,13 +1,5 @@
 """
 GUI tests for protein sequence analysis application.
-
-Tests cover:
-- Widget creation and initialization
-- User interactions and callbacks
-- Input validation
-- File selection dialogs
-- Progress tracking
-- Threading integration with GUI
 """
 
 import pytest
