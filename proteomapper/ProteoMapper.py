@@ -61,10 +61,9 @@ def _match_chunk(params):
     compiled_patterns = [(re.compile(pattern, re.IGNORECASE), label) 
                          for pattern, label in patterns]
     
-    for inner_idx, row in chunk_df.iterrows():
+    for idx, (inner_idx, row) in enumerate(chunk_df.iterrows()):
         cleaned = row['protein sequences_cleaned']
-        match_seq = row['protein sequences_match'].upper()
-        
+        match_seq = row['protein sequences_match'].upper()   
         # OPTIMIZATION: Pre-compute position map once per sequence
         # Maps indices in match_seq (no gaps) to indices in cleaned_seq (with gaps)
         pos_map = []
@@ -82,7 +81,7 @@ def _match_chunk(params):
                 start_cleaned = pos_map[m.start()]
                 end_cleaned = pos_map[min(m.end() - 1, len(pos_map) - 1)]
                 
-                abs_row = start_row + inner_idx
+                abs_row = start_row + idx
                 ranges.append((abs_row, start_cleaned, end_cleaned))
                 key = label or cre.pattern
                 summary[key] += 1
@@ -316,6 +315,14 @@ def apply_pattern_highlights(ws, df, pattern_label_pairs,
         for k, lst in r["pattern_ranges"].items():
             pattern_print_ranges[k].extend(lst)
 
+    # ⬇️ NEW: build highlight_ranges and its frequency
+    highlight_ranges = []
+    for (row_idx, start_cleaned, end_cleaned) in all_ranges:
+        start_col = start_cleaned + leading_columns_count + 1
+        end_col   = end_cleaned   + leading_columns_count + 1
+        highlight_ranges.append((start_col, end_col))
+    highlight_ranges_freq = Counter(highlight_ranges)
+    
     # 4. OPTIMIZED: Pre-create fill object once, minimal cell access
     sky_blue = styles['sky_blue_fill']
     
@@ -331,8 +338,11 @@ def apply_pattern_highlights(ws, df, pattern_label_pairs,
 
     mp_time = time.time() - mp_start
     print(f"  ⏱️  Parallel motif matching time: {mp_time:.3f} s")
-    return [], [], match_summary, pattern_print_ranges, Counter()
-                                  
+    
+    # ⬇️ return a non-empty highlight_ranges_freq
+    return highlight_ranges, [], match_summary, pattern_print_ranges, highlight_ranges_freq
+
+                            
 def load_highlight_positions(positions_file):
     """Load positions to highlight from file"""
     try:
@@ -395,13 +405,13 @@ def create_summary_sheet(wb, match_summary, pattern_print_ranges, total_rows, st
     summary_time = time.time() - summary_start
     print(f"  ⏱️  Summary sheet creation time: {summary_time:.3f} seconds")
 
-def run_domain_scanning(df, pfam_db_path, evalue_threshold=0.001):
+def run_domain_scanning(df, pfam_db_path, evalue_threshold=0.001, seq_id_offset=0):
     """Run HMMER domain scanning and return results"""
     domain_start = time.time()
     
     # Use the cleaned/processed sequences from 'protein sequences_match'
     sequences = {
-        str(i + 1): seq
+        str(i + 1 + seq_id_offset): seq
         for i, seq in enumerate(df['protein sequences_match'].dropna().tolist())
     }
 
@@ -504,7 +514,7 @@ def assign_sequence_chunks(total_sequences, num_processes):
     return chunks
 
 
-def process_sequence_chunk(df_chunk, pfam_db_path, evalue_threshold, chunk_id, output_dir):
+def process_sequence_chunk(df_chunk, pfam_db_path, evalue_threshold, chunk_id, output_dir, offset=0):
     """
     Process a chunk of sequences with HMMER.
     Writes results to a temporary file.
@@ -515,7 +525,7 @@ def process_sequence_chunk(df_chunk, pfam_db_path, evalue_threshold, chunk_id, o
         chunk_start = time.time()
         
         # Run domain scanning on this chunk (runs independent hmmscan)
-        res_lines = run_domain_scanning(df_chunk, pfam_db_path, evalue_threshold)
+        res_lines = run_domain_scanning(df_chunk, pfam_db_path, evalue_threshold, seq_id_offset=offset)
         
         # Write results to temporary file
         temp_file = os.path.join(output_dir, f'chunk_{chunk_id}_results.tmp')
@@ -595,7 +605,7 @@ def run_parallel_domain_scanning(df, pfam_db_path, evalue_threshold, num_process
         # Extract chunk dataframe
         df_chunk = df.iloc[start_idx:end_idx + 1].copy()
         # Reset index for the chunk so sequence IDs match within chunk
-        df_chunk.reset_index(drop=True, inplace=True)
+        #df_chunk.reset_index(drop=True, inplace=True)
         
         # Adjust sequence IDs to match original positions
         # We'll need to track the offset
@@ -604,15 +614,15 @@ def run_parallel_domain_scanning(df, pfam_db_path, evalue_threshold, num_process
         # Create process - each will run its own hmmscan
         p = multiprocessing.Process(
             target=process_sequence_chunk,
-            args=(df_chunk, pfam_db_path, evalue_threshold, i, temp_dir)
+            args=(df_chunk, pfam_db_path, evalue_threshold, i, temp_dir, start_idx)
         )
-        processes.append((p, offset))
+        processes.append(p)
         p.start()
         print(f"Started hmmscan process {i} (PID: {p.pid}) for sequences {start_idx}-{end_idx}")
     
     # Wait for all processes to complete
     print(f"\nWaiting for all {num_processes} hmmscan processes to complete...")
-    for i, (p, offset) in enumerate(processes):
+    for i, p in enumerate(processes):
         p.join()
         print(f"✓ hmmscan process {i} (PID: {p.pid}) completed")
     
