@@ -50,44 +50,59 @@ def _match_chunk(params):
     """
     Runs regex matching on one slice of the dataframe.
     Returns a *serialisable* dict with everything the main process
-    needs to reconstruct the highlights.
+    needs to reconstruct the highlights + MDCS inputs.
     """
     chunk_df, patterns, start_row, leading_columns = params
     ranges = []
     summary = defaultdict(int)
     pattern_ranges = defaultdict(list)
-    
+
+    # NEW: collect motif hits in GAPLESS (match_seq) coordinates for MDCS.
+    # Each item: (sequence_index_1based, motif_pattern, start_no_gap_1based, end_no_gap_1based_inclusive)
+    motif_hits = []
+
     # Pre-compile regexes
-    compiled_patterns = [(re.compile(pattern, re.IGNORECASE), label) 
+    compiled_patterns = [(re.compile(pattern, re.IGNORECASE), label)
                          for pattern, label in patterns]
-    
+
     for idx, (inner_idx, row) in enumerate(chunk_df.iterrows()):
         cleaned = row['protein sequences_cleaned']
-        match_seq = row['protein sequences_match'].upper()   
+        match_seq = row['protein sequences_match'].upper()
+
         # OPTIMIZATION: Pre-compute position map once per sequence
         # Maps indices in match_seq (no gaps) to indices in cleaned_seq (with gaps)
         pos_map = []
         for i, ch in enumerate(cleaned):
             if ch not in {" ", "-"}:
                 pos_map.append(i)
-        
+
         # Skip empty sequences
         if not pos_map:
             continue
-            
+
+        # sequence index as used elsewhere in the pipeline (1..N)
+        sequence_index = (start_row + idx) - 1  # excel row starts at 2; sequence index starts at 1
+
         for cre, label in compiled_patterns:
+            key = label or cre.pattern
+
             # Find all matches in the gapless sequence
             for m in cre.finditer(match_seq):
+                # gapless coords (1-based, inclusive)
+                m_start_ng = m.start() + 1
+                m_end_ng = m.end()  # since end() is exclusive, this is inclusive end in 1-based
+                motif_hits.append((sequence_index, key, m_start_ng, m_end_ng))
+
+                # map to cleaned (with gaps) for highlighting/summary
                 start_cleaned = pos_map[m.start()]
                 end_cleaned = pos_map[min(m.end() - 1, len(pos_map) - 1)]
-                
+
                 abs_row = start_row + idx
                 ranges.append((abs_row, start_cleaned, end_cleaned))
-                key = label or cre.pattern
                 summary[key] += 1
                 pattern_ranges[key].append((start_cleaned + 1, end_cleaned + 1))
-                
-    return {"ranges": ranges, "summary": summary, "pattern_ranges": pattern_ranges}
+
+    return {"ranges": ranges, "summary": summary, "pattern_ranges": pattern_ranges, "motif_hits": motif_hits}
 
 def detect_header_row(df):
     """Detect the header row in the dataframe"""
@@ -227,13 +242,16 @@ def load_patterns(regex_input_file):
 def _apply_pattern_highlights_ST(ws, df, pattern_label_pairs, leading_columns_count, styles):
     """Apply pattern matching highlights to worksheet"""
     highlight_start = time.time()
-    
+
     highlight_ranges = []
     print_ranges = []
     match_summary = defaultdict(int)
     pattern_print_ranges = defaultdict(list)
     any_matches_found = False
-    
+
+    # NEW: collect motif hits in GAPLESS coordinates for MDCS
+    motif_hits = []
+
     for pattern, label in pattern_label_pairs:
         try:
             regex = re.compile(pattern, re.IGNORECASE)
@@ -242,8 +260,18 @@ def _apply_pattern_highlights_ST(ws, df, pattern_label_pairs, leading_columns_co
 
         for row_idx, (cleaned_seq, match_seq) in enumerate(zip(df['protein sequences_cleaned'], df['protein sequences_match']), start=2):
             match_seq_upper = match_seq.upper()
+            sequence_index = row_idx - 1  # 1-based sequence index
+
             for match in regex.finditer(match_seq_upper):
                 any_matches_found = True
+
+                # gapless coords (1-based, inclusive)
+                key = label or pattern
+                m_start_ng = match.start() + 1
+                m_end_ng = match.end()  # end() is exclusive -> inclusive end in 1-based
+                motif_hits.append((sequence_index, key, m_start_ng, m_end_ng))
+
+                # map to cleaned (with gaps) for highlighting/summary
                 start_idx, end_idx = match.start(), match.end() - 1
                 char_count = 0
                 positions = []
@@ -258,22 +286,22 @@ def _apply_pattern_highlights_ST(ws, df, pattern_label_pairs, leading_columns_co
                     full_span = range(positions[0], positions[-1] + 1)
                     highlight_ranges.append([positions[0] + leading_columns_count + 1, positions[-1] + leading_columns_count + 1])
                     print_ranges.append([positions[0] + 1, positions[-1] + 1])
-                    pattern_print_ranges[label or pattern].append((positions[0] + 1, positions[-1] + 1))
-                    match_summary[label or pattern] += 1
+                    pattern_print_ranges[key].append((positions[0] + 1, positions[-1] + 1))
+                    match_summary[key] += 1
 
                     for col in [pos + leading_columns_count + 1 for pos in full_span]:
                         ws.cell(row=row_idx, column=col).fill = styles['sky_blue_fill']
-    
+
     highlight_time = time.time() - highlight_start
     print(f"  ⏱️  Pattern matching & highlighting time: {highlight_time:.3f} seconds")
-    
+
     if not any_matches_found:
         print("\nNo patterns were found in any of the sequences.")
+        highlight_ranges_freq = Counter()
     else:
         highlight_ranges_freq = Counter(map(tuple, highlight_ranges))
-        print_ranges_freq = Counter(map(tuple, print_ranges))
-    
-    return highlight_ranges, print_ranges, match_summary, pattern_print_ranges, highlight_ranges_freq if any_matches_found else Counter()
+
+    return highlight_ranges, print_ranges, match_summary, pattern_print_ranges, highlight_ranges_freq, motif_hits
    
    
 def apply_pattern_highlights(ws, df, pattern_label_pairs,
@@ -307,6 +335,7 @@ def apply_pattern_highlights(ws, df, pattern_label_pairs,
     all_ranges = []
     match_summary = defaultdict(int)
     pattern_print_ranges = defaultdict(list)
+    motif_hits_all = []  # NEW: (seq_index, motif_pattern, start_no_gap, end_no_gap)
 
     for r in results:
         all_ranges.extend(r["ranges"])
@@ -314,6 +343,7 @@ def apply_pattern_highlights(ws, df, pattern_label_pairs,
             match_summary[k] += v
         for k, lst in r["pattern_ranges"].items():
             pattern_print_ranges[k].extend(lst)
+        motif_hits_all.extend(r.get("motif_hits", []))
 
     # ⬇️ NEW: build highlight_ranges and its frequency
     highlight_ranges = []
@@ -327,12 +357,12 @@ def apply_pattern_highlights(ws, df, pattern_label_pairs,
     sky_blue = styles['sky_blue_fill']
     
     # Apply highlights - single pass
-    for row_idx, start_col, end_col in all_ranges:
-        # Calculate actual column range once
-        start_excel = start_col + leading_columns_count + 1
-        end_excel = end_col + leading_columns_count + 2
-        
-        # Apply fill to range
+    # all_ranges items are: (excel_row_idx, start_cleaned_idx, end_cleaned_idx)
+    for row_idx, start_cleaned, end_cleaned in all_ranges:
+        # Convert cleaned (with-gaps) 0-based indices into excel 1-based columns
+        start_excel = start_cleaned + leading_columns_count + 1
+        end_excel = end_cleaned + leading_columns_count + 2  # +1 for 1-based, +1 because range end is exclusive
+
         for col in range(start_excel, end_excel):
             ws.cell(row=row_idx, column=col).fill = sky_blue
 
@@ -340,7 +370,7 @@ def apply_pattern_highlights(ws, df, pattern_label_pairs,
     print(f"  ⏱️  Parallel motif matching time: {mp_time:.3f} s")
     
     # ⬇️ return a non-empty highlight_ranges_freq
-    return highlight_ranges, [], match_summary, pattern_print_ranges, highlight_ranges_freq
+    return highlight_ranges, [], match_summary, pattern_print_ranges, highlight_ranges_freq, motif_hits_all
 
                             
 def load_highlight_positions(positions_file):
@@ -811,7 +841,119 @@ def create_domain_summary_sheet(wb, res_lines, styles):
     
     domain_summary_time = time.time() - domain_summary_start
     print(f"  ⏱️  Domain summary sheet creation time: {domain_summary_time:.3f} seconds")
-    print("\nFinished creating 'Domain Summary' sheet.")
+    
+def _parse_domains_by_sequence(res_lines):
+    """Parse HMMER result lines into {seq_index(int): [(accession,str), start(int), end(int)]} (gapless coords)."""
+    domains_by_seq = defaultdict(list)
+    for line in res_lines or []:
+        try:
+            parts = line.split('|')
+            seq_num = int(parts[0].split(':')[1].strip())
+            start_pos = int(parts[1].split(':')[1].strip())
+            end_pos = int(parts[2].split(':')[1].strip())
+            accession_id = parts[3].split(':')[1].strip()
+            # Store gapless coordinates
+            domains_by_seq[seq_num].append((accession_id, start_pos, end_pos))
+        except Exception:
+            continue
+    # Sort domains by start for a tiny speed win
+    for k in domains_by_seq:
+        domains_by_seq[k].sort(key=lambda x: x[1])
+    return domains_by_seq
+
+
+def _compute_mdcs_summary(motif_hits, domains_by_seq):
+    """
+    Build MDCS summary rows following user requirements.
+
+    motif_hits: list of tuples (seq_index, motif_pattern, m_start_no_gap, m_end_no_gap) (1-based, inclusive)
+    domains_by_seq: dict {seq_index: [(accession, d_start, d_end), ...]} (1-based, inclusive)
+
+    Returns list of rows:
+      [Sequence index, Motif pattern, MDCS(str), Interpretation]
+    """
+    # group motif hits by (seq, motif)
+    motifs_by_seq = defaultdict(lambda: defaultdict(list))
+    for seq_idx, motif_pat, m_start, m_end in motif_hits or []:
+        motifs_by_seq[int(seq_idx)][motif_pat].append((int(m_start), int(m_end)))
+
+    rows = []
+    for seq_idx in sorted(motifs_by_seq.keys()):
+        doms = domains_by_seq.get(seq_idx, [])
+        has_domains = len(doms) > 0
+
+        for motif_pat in sorted(motifs_by_seq[seq_idx].keys()):
+            occs = motifs_by_seq[seq_idx][motif_pat]
+            # Requirement #2: if motif not found, do not show. (Already satisfied by construction.)
+
+            # For each domain accession in this sequence, keep the highest MDCS across:
+            #  - multiple motif occurrences
+            #  - multiple overlaps with that domain
+            best_by_domain = {}  # accession -> best mdcs
+
+            if has_domains:
+                for acc, d_start, d_end in doms:
+                    best = 0.0
+                    for m_start, m_end in occs:
+                        motif_len = (m_end - m_start + 1)
+                        if motif_len <= 0:
+                            continue
+                        # overlap in gapless coordinates
+                        ov = max(0, min(m_end, d_end) - max(m_start, d_start) + 1)
+                        mdcs = ov / motif_len
+                        if mdcs > best:
+                            best = mdcs
+                    if best > 0:
+                        best_by_domain[acc] = max(best_by_domain.get(acc, 0.0), best)
+
+            # Build MDCS cell value (single cell containing multiple domain:score pairs)
+            if best_by_domain:
+                # sort by score desc, then accession
+                items = sorted(best_by_domain.items(), key=lambda x: (-x[1], x[0]))
+                mdcs_cell = "; ".join([f"{acc}:{val:.2f}" for acc, val in items])
+                # interpretation
+                max_val = max(best_by_domain.values())
+                if abs(max_val - 1.0) < 1e-9:
+                    interpretation = "Fully Embedded"
+                else:
+                    interpretation = "Partial Overlap"
+            else:
+                mdcs_cell = "0"
+                interpretation = "No Domains" if not has_domains else "Outside Domains"
+
+            rows.append([seq_idx, motif_pat, mdcs_cell, interpretation])
+
+    return rows
+
+
+def create_mdcs_summary_sheet(wb, motif_hits, res_lines, styles):
+    """Create 'MDCS Summary' sheet (does not alter other pipeline features)."""
+    domains_by_seq = _parse_domains_by_sequence(res_lines)
+    rows = _compute_mdcs_summary(motif_hits, domains_by_seq)
+
+    mdcs_ws = wb.create_sheet("MDCS Summary")
+    headers = ["Sequence", "Motif pattern", "MDCS", "Interpretation"]
+    mdcs_ws.append(headers)
+
+    # style header
+    for cell in mdcs_ws[1]:
+        cell.font = styles['bold_font']
+
+    for r in rows:
+        mdcs_ws.append(r)
+
+    # widths + alignment
+    for col_idx, column_cells in enumerate(mdcs_ws.columns, 1):
+        max_length = max((len(str(cell.value)) for cell in column_cells if cell.value is not None), default=10)
+        adjusted_width = min(max_length + 2, 60)
+        mdcs_ws.column_dimensions[get_column_letter(col_idx)].width = adjusted_width
+
+    apply_bulk_alignment(mdcs_ws, styles['center_alignment'], min_row=1)
+    return True
+
+
+
+print("\nFinished creating 'Domain Summary' sheet.")
 
 
 class ProteinAnalysisApp:
@@ -1465,6 +1607,10 @@ class ProteinAnalysisApp:
         
         style_time = time.time() - style_start
         print(f"  ⏱️  Initial styling time: {style_time:.3f} seconds")
+
+        # NEW: collected motif hits (gapless coords) for optional MDCS calculation
+        motif_hits_all = []
+
         
         # Process motif searching if selected
         if regex_input is not None:
@@ -1483,7 +1629,7 @@ class ProteinAnalysisApp:
                 8
                 )
             
-            highlight_ranges, print_ranges, match_summary, pattern_print_ranges, highlight_ranges_freq = \
+            highlight_ranges, print_ranges, match_summary, pattern_print_ranges, highlight_ranges_freq, motif_hits_all = \
             apply_pattern_highlights(
             ws, df, pattern_label_pairs,
             leading_columns_count, styles,
@@ -1553,7 +1699,15 @@ class ProteinAnalysisApp:
             if res_lines:
                 print(f"Found {len(res_lines)} domain hits. Creating domain highlights...")
                 apply_domain_highlights(wb, ws, df, res_lines, leading_columns_count, styles, df_final)
-                
+
+                # NEW: MDCS Summary sheet (only when both motif searching and domain scanning are enabled)
+                if regex_input is not None and motif_hits_all is not None:
+                    try:
+                        create_mdcs_summary_sheet(wb, motif_hits_all, res_lines, styles)
+                        print("Finished creating 'MDCS Summary' sheet.")
+                    except Exception as e:
+                        print(f"MDCS Summary creation skipped due to error: {e}")
+
                 # Write hitdata.txt file
                 hitdata_file = os.path.join(output_dir, "hitdata.txt")
                 with open(hitdata_file, "w") as out_file:
