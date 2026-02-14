@@ -255,6 +255,8 @@ Some tests may require:
 ## License
 This project is licensed under the GNU General Public License v3.0 - see the [LICENSE](LICENSE) file for details.
 
-Copyright (c) 2025 Sifullah Mahmud Sefa
-Made with ❤️ for the bioinformatics community
+Copyright (c) 2025 Sifullah Mahmud Sefa.
+
+Made with ❤️ for the bioinformatics community.
+
 
