@@ -1,197 +1,260 @@
 # ProteoMapper
 
-ProteoMapper is a Python/Tkinter desktop app for analyzing protein sequence alignments from Excel files. It cleans and expands sequences into per-position columns, highlights motifs and positions, summarizes matches, and can optionally run Pfam domain scanning via HMMER.
+ProteoMapper is a Python-based desktop application for analyzing protein sequence alignments from Excel files.
+It provides an intuitive graphical interface to clean sequences, expand alignments, detect motifs, highlight positions, scan Pfam domains using HMMER, and quantify motif–domain relationships.
 
-## Features
-- Reads Excel files with flexible header placement.
-- Cleans and normalizes protein sequences (handles leading ">" and gap characters).
-- Splits sequences into aligned, per-position columns for inspection in Excel.
-- Motif search with regex highlighting and a match summary sheet.
-- Optional conservation threshold to outline frequently matched motifs.
-- Position-based highlighting for user-specified residue indices.
-- Optional Pfam domain scanning via `hmmscan` with domain highlights and a hit report.
-- Parallel processing for motif search and domain scanning to improve performance.
+The tool is designed for researchers working with protein families, conserved motifs, and domain annotations who want fast visual inspection and structured Excel outputs.
 
-## Requirements
-- Python 3.8+
-- Core Python packages:
-  - pandas
-  - numpy
-  - openpyxl
-  - psutil
-- Tkinter (typically bundled with Python on Windows/macOS)
-- Optional: HMMER (for domain scanning)
-  - `hmmscan` must be on PATH
-  - Pfam database file (HMM format)
+---
+
+## ✨ Features
+
+* 📄 Reads Excel files with automatic header detection
+* 🧬 Cleans protein sequences (handles `>` headers, gaps, invalid characters)
+* 🔢 Expands sequences into aligned per-position columns in Excel
+* 🔍 Regex-based motif detection with highlighting
+* 📊 Match summary with counts and positions
+* 📌 Position-based residue highlighting
+* 🧠 Optional conservation threshold for frequent motifs
+* 🧩 Pfam domain scanning using **HMMER (`hmmscan`)**
+* 📈 Domain summary and annotated alignment sheet
+* 🧮 **MDCS summary** for motif–domain overlap interpretation
+* ⚡ Parallel processing for faster motif and domain analysis
+* 🖥️ Responsive Tkinter GUI with background execution
+
+---
+
+## 📦 Requirements
+
+### Python
+
+* Python **3.8+**
+
+### Core packages
+
+```
+pandas
+numpy
+openpyxl
+```
+
+Tkinter is bundled with most Python installations.
+
+### Optional (for domain scanning)
+
+* **HMMER** installed
+* `hmmscan` available on PATH
+* Pfam database file (`.hmm`)
+
+---
+
+## 🚀 Installation
+
+Clone repository:
+
+```
+git clone <your-repo-url>
+cd proteomapper
+```
 
 Install dependencies:
 
-```bash
+```
 pip install -r requirements.txt
 ```
 
-For development:
+---
 
-```bash
-pip install -r requirements-dev.txt
-```
+## ▶️ Quick Start
 
-## Quick Start
 Run the GUI:
 
-```bash
+```
 python proteomapper/ProteoMapper.py
 ```
 
-From the GUI, select your input Excel file and choose the analysis options you need.
+Then:
 
-## Input Excel Format
-ProteoMapper scans the first sheet and detects the header row automatically. Your file must include:
-- A column named `Protein Sequences`
-- Either `Gene Name` or `Gene ID`
+1. Select your Excel input file
+2. Choose analysis options
+3. Click **Proceed**
+4. Output Excel will be generated next to your input file
 
-Notes:
-- The tool tolerates a leading `>` in sequences and will strip it.
-- Gaps (`-` or spaces) are preserved in the output alignment view.
-- Non-amino-acid characters are removed during cleaning.
+---
 
-Example header row:
+## 📑 Input Excel Format
+
+ProteoMapper scans the first sheet and automatically detects the header row.
+
+Required columns:
+
+* `Protein Sequences`
+* Either `Gene Name` or `Gene ID`
+
+Example:
 
 ```
 Gene Name | Protein Sequences
+GeneA     | MKT--AILVGL
+GeneB     | MKTAKAILVGL
 ```
 
-Example rows:
+Notes:
 
-```
-GeneA | MKT--AILVGL
-GeneB | MKTAKAILVGL
-```
+* Leading `>` is automatically removed
+* Gaps (`-` or spaces) are preserved in alignment
+* Non-amino-acid characters are removed
 
-## Analysis Options
+---
+
+## 🔎 Analysis Options
+
 ### Motif Search (Regex)
-Provide one regex per line in the GUI. Matches are highlighted in the output and summarized.
 
-Example patterns:
+Enter one regex per line in the GUI.
+
+Example:
 
 ```
 C..C
 N[^P][ST]
 ```
 
-A conservation threshold can be set to outline motif regions found in a high percentage of sequences.
+Results:
+
+* Matches highlighted in Excel
+* Counts and positions listed in **Match Summary**
+
+You can also define a **conservation threshold (%)** to outline frequently occurring motifs.
+
+---
 
 ### Position Highlighting
-Enter space-separated positions (1-based) to highlight columns in the output alignment.
 
-Example:
+Enter space-separated residue positions (1-based):
 
 ```
 5 10 25 42
 ```
 
+These columns will be highlighted across all sequences.
+
+---
+
 ### Domain Scanning (Pfam / HMMER)
-Enable domain scanning to run `hmmscan` against a Pfam database. Results are filtered by
-E-value threshold and written to `hitdata.txt`. Detected domains are highlighted in Excel.
 
-Requirements:
-- `hmmscan` available on PATH
-- Pfam database file path
+ProteoMapper can run:
 
-## HMMER Installation Guide
-Verify installation:
+```
+hmmscan Pfam-A.hmm sequences.fasta
+```
 
-```bash
+Outputs:
+
+* Domain-highlighted alignment sheet
+* Domain summary table
+* Annotated Excel comments for each domain
+
+---
+
+## 🧠 MDCS Summary (Motif–Domain Context Score)
+
+ProteoMapper computes MDCS values describing how motifs overlap with domains:
+
+* **1.0 → Fully embedded in domain**
+* **0 < MDCS < 1 → Partial overlap**
+* **0 → Outside domains**
+* **No Domains → sequence has no detected domains**
+
+This helps identify:
+
+* domain-specific motifs
+* conserved functional regions
+* motif–domain relationships in protein families
+
+---
+
+## 🛠️ Installing HMMER
+
+### Check installation
+
+```
 hmmscan -h
 ```
 
-### Recommended: Conda (cross-platform)
+### Conda (recommended)
 
-```bash
+```
 conda install -c bioconda hmmer
 ```
 
-### macOS (Homebrew)
+### macOS
 
-```bash
+```
 brew install hmmer
 ```
 
 ### Ubuntu/Debian
 
-```bash
-sudo apt-get update
+```
 sudo apt-get install hmmer
 ```
 
-### Pfam Database Setup
-Download a Pfam HMM database (for example `Pfam-A.hmm`) and prepare it:
+---
 
-```bash
-hmmpress Pfam-A.hmm
-```
+## 🗂 Outputs
 
-Then point the GUI to the `Pfam-A.hmm` file.
+Generated next to your input file:
 
-## Outputs
-The tool writes outputs next to the input file:
-- `msa_data_processed.xlsx`: main output with alignment, highlights, and summary sheet
-- `hitdata.txt`: domain scan results (only when domain scanning is enabled)
+* `msa_data_processed.xlsx` → main output
 
-Key worksheets:
-- `First_Sheet`: cleaned and expanded alignment with highlights
-- `Match Summary`: per-pattern counts and matched position ranges
+### Key worksheets
 
-## Examples
-### Motif Highlight Example
-Input sequences:
+* **First_Sheet** → cleaned alignment + highlights
+* **Match Summary** → motif counts and ranges
+* **Domain_Highlights** → alignment with domain annotation
+* **Domain Summary** → detailed domain hits
+* **MDCS Summary** → motif–domain overlap interpretation
 
-```
-GeneX | ACDEFGHIKLMNPQRSTVWY
-GeneY | ACDEYGHIKLMNPQRSTVWY
-```
+---
 
-Regex pattern:
+## 🧪 Testing
+
+Run:
 
 ```
-DEFG
-```
-
-Result:
-- The matching region is highlighted in both sequences.
-- The summary sheet lists the pattern and count of matches.
-
-### Domain Scan Example
-If `hmmscan` identifies a domain match for sequence 3 at positions 45-120, the output will:
-- Highlight those positions in the alignment sheet.
-- Add a line to `hitdata.txt` with sequence ID, start/end, accession, and E-value.
-
-## Project Structure
-- `proteomapper/ProteoMapper.py`: main application and analysis logic
-- `proteomapper/tests/`: test suite
-- `requirements.txt`: runtime dependencies
-- `requirements-dev.txt`: development/test dependencies
-
-## Testing
-Run tests from the repository root:
-
-```bash
 pytest -q
 ```
 
-Some tests may require a GUI-capable environment or external tools (HMMER) depending on
-your platform and configuration.
+Some tests may require:
 
-## Troubleshooting
-- "Could not find the correct header row": verify `Protein Sequences` and `Gene Name`/`Gene ID` headers.
-- HMMER errors: confirm `hmmscan` is installed and available on PATH.
-- Large datasets: increase available CPU cores or reduce motif patterns to improve performance.
+* GUI environment
+* HMMER installed
 
-## Notes
-- The GUI remains responsive during processing; analysis runs in a background thread.
-- Output formatting is optimized for Excel readability and downstream inspection.
+---
+
+## 🧯 Troubleshooting
+
+**Header not detected**
+
+* Ensure column names match:
+
+  * `Protein Sequences`
+  * `Gene Name` or `Gene ID`
+
+**HMMER not found**
+
+* Ensure `hmmscan` is installed and on PATH
+
+**Slow performance**
+
+* Reduce motif patterns
+* Increase parallel processes
+
 
 ## License
 This project is licensed under the GNU General Public License v3.0 - see the [LICENSE](LICENSE) file for details.
 
 Copyright (c) 2025 Sifullah Mahmud Sefa
+Made with ❤️ for the bioinformatics community
+
