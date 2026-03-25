@@ -1,0 +1,39 @@
+Sequence:1 | Start:32 | End:458 | ID:PF00083.31 | Description:Sugar (and other) transporter | E-value:2.1e-90 | Cond.E-value:1.6e-94 | Bit score:304.3
+Sequence:1 | Start:36 | End:410 | ID:PF07690.22 | Description:Major Facilitator Superfamily | E-value:2.3e-24 | Cond.E-value:1.8e-28 | Bit score:86.5
+Sequence:2 | Start:51 | End:456 | ID:PF00083.31 | Description:Sugar (and other) transporter | E-value:1.1e-91 | Cond.E-value:8.6e-96 | Bit score:308.5
+Sequence:2 | Start:34 | End:401 | ID:PF07690.22 | Description:Major Facilitator Superfamily | E-value:2.7e-25 | Cond.E-value:2.1e-29 | Bit score:89.5
+Sequence:3 | Start:53 | End:487 | ID:PF00083.31 | Description:Sugar (and other) transporter | E-value:2.4e-96 | Cond.E-value:1.9e-100 | Bit score:323.8
+Sequence:3 | Start:64 | End:432 | ID:PF07690.22 | Description:Major Facilitator Superfamily | E-value:1.7e-22 | Cond.E-value:1.4e-26 | Bit score:80.3
+Sequence:4 | Start:36 | End:463 | ID:PF00083.31 | Description:Sugar (and other) transporter | E-value:7.1e-89 | Cond.E-value:8.3e-93 | Bit score:299.2
+Sequence:4 | Start:42 | End:305 | ID:PF07690.22 | Description:Major Facilitator Superfamily | E-value:5.2e-19 | Cond.E-value:6.2e-23 | Bit score:68.8
+Sequence:4 | Start:292 | End:455 | ID:PF07690.22 | Description:Major Facilitator Superfamily | E-value:1.8e-05 | Cond.E-value:2.1e-09 | Bit score:24.3
+Sequence:5 | Start:52 | End:486 | ID:PF00083.31 | Description:Sugar (and other) transporter | E-value:1.1e-101 | Cond.E-value:1.7e-105 | Bit score:341.4
+Sequence:5 | Start:63 | End:431 | ID:PF07690.22 | Description:Major Facilitator Superfamily | E-value:1.7e-23 | Cond.E-value:2.7e-27 | Bit score:83.6
+Sequence:6 | Start:34 | End:459 | ID:PF00083.31 | Description:Sugar (and other) transporter | E-value:5.9e-91 | Cond.E-value:4.6e-95 | Bit score:306.1
+Sequence:6 | Start:37 | End:409 | ID:PF07690.22 | Description:Major Facilitator Superfamily | E-value:9.5e-27 | Cond.E-value:7.4e-31 | Bit score:94.3
+Sequence:6 | Start:301 | End:453 | ID:PF07690.22 | Description:Major Facilitator Superfamily | E-value:8.1e-07 | Cond.E-value:6.4e-11 | Bit score:28.7
+Sequence:7 | Start:55 | End:468 | ID:PF00083.31 | Description:Sugar (and other) transporter | E-value:4.3e-90 | Cond.E-value:5.1e-94 | Bit score:303.2
+Sequence:7 | Start:61 | End:313 | ID:PF07690.22 | Description:Major Facilitator Superfamily | E-value:4.2e-15 | Cond.E-value:4.9e-19 | Bit score:56.0
+Sequence:7 | Start:280 | End:459 | ID:PF07690.22 | Description:Major Facilitator Superfamily | E-value:5.7e-07 | Cond.E-value:6.7e-11 | Bit score:29.3
+Sequence:8 | Start:53 | End:326 | ID:PF00083.31 | Description:Sugar (and other) transporter | E-value:5.7e-53 | Cond.E-value:4.4e-57 | Bit score:180.9
+Sequence:8 | Start:36 | End:326 | ID:PF07690.22 | Description:Major Facilitator Superfamily | E-value:1.8e-21 | Cond.E-value:1.4e-25 | Bit score:76.9
+Sequence:9 | Start:27 | End:452 | ID:PF00083.31 | Description:Sugar (and other) transporter | E-value:1.2e-82 | Cond.E-value:9.4e-87 | Bit score:278.7
+Sequence:9 | Start:30 | End:405 | ID:PF07690.22 | Description:Major Facilitator Superfamily | E-value:5.2e-23 | Cond.E-value:4.1e-27 | Bit score:82.0
+Sequence:10 | Start:38 | End:461 | ID:PF00083.31 | Description:Sugar (and other) transporter | E-value:4.9e-89 | Cond.E-value:3.8e-93 | Bit score:299.8
+Sequence:10 | Start:39 | End:415 | ID:PF07690.22 | Description:Major Facilitator Superfamily | E-value:5.4e-25 | Cond.E-value:4.2e-29 | Bit score:88.5
+Sequence:11 | Start:52 | End:457 | ID:PF00083.31 | Description:Sugar (and other) transporter | E-value:5.2e-80 | Cond.E-value:4e-84 | Bit score:270.0
+Sequence:11 | Start:30 | End:392 | ID:PF07690.22 | Description:Major Facilitator Superfamily | E-value:5.2e-23 | Cond.E-value:4.1e-27 | Bit score:82.0
+Sequence:11 | Start:316 | End:449 | ID:PF07690.22 | Description:Major Facilitator Superfamily | E-value:1.8e-05 | Cond.E-value:1.4e-09 | Bit score:24.3
+Sequence:12 | Start:63 | End:484 | ID:PF00083.31 | Description:Sugar (and other) transporter | E-value:2.1e-71 | Cond.E-value:2.5e-75 | Bit score:241.6
+Sequence:12 | Start:61 | End:433 | ID:PF07690.22 | Description:Major Facilitator Superfamily | E-value:6.3e-28 | Cond.E-value:7.4e-32 | Bit score:98.2
+Sequence:13 | Start:71 | End:471 | ID:PF00083.31 | Description:Sugar (and other) transporter | E-value:1.9e-81 | Cond.E-value:1.5e-85 | Bit score:274.7
+Sequence:13 | Start:45 | End:419 | ID:PF07690.22 | Description:Major Facilitator Superfamily | E-value:4.6e-30 | Cond.E-value:3.6e-34 | Bit score:105.2
+Sequence:14 | Start:66 | End:467 | ID:PF00083.31 | Description:Sugar (and other) transporter | E-value:5.5e-80 | Cond.E-value:8.6e-84 | Bit score:269.9
+Sequence:14 | Start:40 | End:415 | ID:PF07690.22 | Description:Major Facilitator Superfamily | E-value:3.9e-31 | Cond.E-value:6.1e-35 | Bit score:108.7
+Sequence:14 | Start:310 | End:459 | ID:PF07690.22 | Description:Major Facilitator Superfamily | E-value:3.8e-06 | Cond.E-value:6e-10 | Bit score:26.5
+Sequence:15 | Start:50 | End:475 | ID:PF00083.31 | Description:Sugar (and other) transporter | E-value:1.5e-88 | Cond.E-value:1.2e-92 | Bit score:298.2
+Sequence:15 | Start:64 | End:425 | ID:PF07690.22 | Description:Major Facilitator Superfamily | E-value:2e-22 | Cond.E-value:1.6e-26 | Bit score:80.1
+Sequence:16 | Start:42 | End:462 | ID:PF00083.31 | Description:Sugar (and other) transporter | E-value:1.1e-84 | Cond.E-value:8.9e-89 | Bit score:285.4
+Sequence:16 | Start:40 | End:414 | ID:PF07690.22 | Description:Major Facilitator Superfamily | E-value:4.6e-22 | Cond.E-value:3.6e-26 | Bit score:78.9
+Sequence:17 | Start:60 | End:466 | ID:PF00083.31 | Description:Sugar (and other) transporter | E-value:1.4e-84 | Cond.E-value:1.7e-88 | Bit score:285.0
+Sequence:17 | Start:39 | End:418 | ID:PF07690.22 | Description:Major Facilitator Superfamily | E-value:9.3e-25 | Cond.E-value:1.1e-28 | Bit score:87.7
