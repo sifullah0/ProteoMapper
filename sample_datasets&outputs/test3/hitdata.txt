@@ -1,0 +1,280 @@
+Sequence:1 | Start:1 | End:81 | ID:PF23171.1 | Description:Hypoxia-inducible factor 1-alpha bHLH domain | E-value:2e-46 | Cond.E-value:7.9e-50 | Bit score:156.6
+Sequence:1 | Start:255 | End:340 | ID:PF08447.19 | Description:PAS fold | E-value:3e-21 | Cond.E-value:1.2e-24 | Bit score:76.0
+Sequence:1 | Start:242 | End:344 | ID:PF14598.13 | Description:PAS domain | E-value:1e-20 | Cond.E-value:4e-24 | Bit score:74.2
+Sequence:1 | Start:798 | End:833 | ID:PF08778.16 | Description:HIF-1 alpha C terminal transactivation domain | E-value:3.4e-22 | Cond.E-value:1.3e-25 | Bit score:78.2
+Sequence:1 | Start:95 | End:150 | ID:PF00989.32 | Description:PAS fold | E-value:2e-05 | Cond.E-value:7.6e-09 | Bit score:25.1
+Sequence:1 | Start:252 | End:329 | ID:PF00989.32 | Description:PAS fold | E-value:4.4e-07 | Cond.E-value:1.7e-10 | Bit score:30.4
+Sequence:1 | Start:556 | End:581 | ID:PF11413.14 | Description:Hypoxia-inducible factor-1 | E-value:2.6e-14 | Cond.E-value:1e-17 | Bit score:52.7
+Sequence:1 | Start:255 | End:339 | ID:PF13426.14 | Description:PAS domain | E-value:9.4e-05 | Cond.E-value:3.7e-08 | Bit score:23.1
+Sequence:2 | Start:1 | End:81 | ID:PF23171.1 | Description:Hypoxia-inducible factor 1-alpha bHLH domain | E-value:1.1e-46 | Cond.E-value:4.2e-50 | Bit score:157.5
+Sequence:2 | Start:255 | End:340 | ID:PF08447.19 | Description:PAS fold | E-value:3e-21 | Cond.E-value:1.2e-24 | Bit score:76.0
+Sequence:2 | Start:242 | End:344 | ID:PF14598.13 | Description:PAS domain | E-value:1e-20 | Cond.E-value:4e-24 | Bit score:74.2
+Sequence:2 | Start:796 | End:831 | ID:PF08778.16 | Description:HIF-1 alpha C terminal transactivation domain | E-value:3.9e-22 | Cond.E-value:1.5e-25 | Bit score:78.0
+Sequence:2 | Start:95 | End:150 | ID:PF00989.32 | Description:PAS fold | E-value:1.9e-05 | Cond.E-value:7.6e-09 | Bit score:25.1
+Sequence:2 | Start:252 | End:329 | ID:PF00989.32 | Description:PAS fold | E-value:4.4e-07 | Cond.E-value:1.7e-10 | Bit score:30.4
+Sequence:2 | Start:556 | End:581 | ID:PF11413.14 | Description:Hypoxia-inducible factor-1 | E-value:2.6e-14 | Cond.E-value:1e-17 | Bit score:52.7
+Sequence:2 | Start:255 | End:339 | ID:PF13426.14 | Description:PAS domain | E-value:9.4e-05 | Cond.E-value:3.7e-08 | Bit score:23.1
+Sequence:3 | Start:1 | End:81 | ID:PF23171.1 | Description:Hypoxia-inducible factor 1-alpha bHLH domain | E-value:1.1e-46 | Cond.E-value:4.2e-50 | Bit score:157.5
+Sequence:3 | Start:255 | End:340 | ID:PF08447.19 | Description:PAS fold | E-value:3.1e-21 | Cond.E-value:1.2e-24 | Bit score:75.9
+Sequence:3 | Start:242 | End:344 | ID:PF14598.13 | Description:PAS domain | E-value:1e-20 | Cond.E-value:4.1e-24 | Bit score:74.2
+Sequence:3 | Start:808 | End:843 | ID:PF08778.16 | Description:HIF-1 alpha C terminal transactivation domain | E-value:3.4e-22 | Cond.E-value:1.3e-25 | Bit score:78.1
+Sequence:3 | Start:95 | End:150 | ID:PF00989.32 | Description:PAS fold | E-value:2e-05 | Cond.E-value:7.9e-09 | Bit score:25.0
+Sequence:3 | Start:252 | End:329 | ID:PF00989.32 | Description:PAS fold | E-value:4.5e-07 | Cond.E-value:1.8e-10 | Bit score:30.4
+Sequence:3 | Start:573 | End:598 | ID:PF11413.14 | Description:Hypoxia-inducible factor-1 | E-value:2.7e-14 | Cond.E-value:1e-17 | Bit score:52.7
+Sequence:3 | Start:255 | End:339 | ID:PF13426.14 | Description:PAS domain | E-value:9.6e-05 | Cond.E-value:3.8e-08 | Bit score:23.1
+Sequence:4 | Start:1 | End:82 | ID:PF23171.1 | Description:Hypoxia-inducible factor 1-alpha bHLH domain | E-value:8.6e-46 | Cond.E-value:3.7e-49 | Bit score:154.6
+Sequence:4 | Start:256 | End:347 | ID:PF08447.19 | Description:PAS fold | E-value:1.5e-18 | Cond.E-value:6.6e-22 | Bit score:67.3
+Sequence:4 | Start:796 | End:831 | ID:PF08778.16 | Description:HIF-1 alpha C terminal transactivation domain | E-value:4.7e-22 | Cond.E-value:2e-25 | Bit score:77.7
+Sequence:4 | Start:243 | End:351 | ID:PF14598.13 | Description:PAS domain | E-value:9.2e-18 | Cond.E-value:4e-21 | Bit score:64.7
+Sequence:4 | Start:563 | End:588 | ID:PF11413.14 | Description:Hypoxia-inducible factor-1 | E-value:2.6e-14 | Cond.E-value:1.1e-17 | Bit score:52.7
+Sequence:4 | Start:96 | End:151 | ID:PF00989.32 | Description:PAS fold | E-value:1.9e-05 | Cond.E-value:8.4e-09 | Bit score:25.1
+Sequence:4 | Start:253 | End:336 | ID:PF00989.32 | Description:PAS fold | E-value:5.1e-06 | Cond.E-value:2.2e-09 | Bit score:27.0
+Sequence:5 | Start:670 | End:705 | ID:PF08778.16 | Description:HIF-1 alpha C terminal transactivation domain | E-value:2.8e-22 | Cond.E-value:7.6e-26 | Bit score:78.4
+Sequence:5 | Start:137 | End:222 | ID:PF08447.19 | Description:PAS fold | E-value:3.4e-21 | Cond.E-value:9.3e-25 | Bit score:75.8
+Sequence:5 | Start:124 | End:226 | ID:PF14598.13 | Description:PAS domain | E-value:1.8e-20 | Cond.E-value:4.8e-24 | Bit score:73.4
+Sequence:5 | Start:438 | End:463 | ID:PF11413.14 | Description:Hypoxia-inducible factor-1 | E-value:2.2e-14 | Cond.E-value:5.9e-18 | Bit score:53.0
+Sequence:5 | Start:134 | End:211 | ID:PF00989.32 | Description:PAS fold | E-value:3.4e-07 | Cond.E-value:9.3e-11 | Bit score:30.7
+Sequence:6 | Start:1 | End:80 | ID:PF23171.1 | Description:Hypoxia-inducible factor 1-alpha bHLH domain | E-value:5.4e-50 | Cond.E-value:2.1e-53 | Bit score:168.0
+Sequence:6 | Start:286 | End:371 | ID:PF08447.19 | Description:PAS fold | E-value:3.1e-21 | Cond.E-value:1.2e-24 | Bit score:75.9
+Sequence:6 | Start:273 | End:375 | ID:PF14598.13 | Description:PAS domain | E-value:1.1e-20 | Cond.E-value:4.2e-24 | Bit score:74.1
+Sequence:6 | Start:818 | End:853 | ID:PF08778.16 | Description:HIF-1 alpha C terminal transactivation domain | E-value:3.5e-22 | Cond.E-value:1.4e-25 | Bit score:78.1
+Sequence:6 | Start:94 | End:151 | ID:PF00989.32 | Description:PAS fold | E-value:1.5e-05 | Cond.E-value:5.9e-09 | Bit score:25.5
+Sequence:6 | Start:283 | End:360 | ID:PF00989.32 | Description:PAS fold | E-value:4.6e-07 | Cond.E-value:1.8e-10 | Bit score:30.3
+Sequence:6 | Start:587 | End:612 | ID:PF11413.14 | Description:Hypoxia-inducible factor-1 | E-value:2.7e-14 | Cond.E-value:1.1e-17 | Bit score:52.7
+Sequence:6 | Start:286 | End:370 | ID:PF13426.14 | Description:PAS domain | E-value:9.8e-05 | Cond.E-value:3.8e-08 | Bit score:23.1
+Sequence:7 | Start:211 | End:288 | ID:PF23171.1 | Description:Hypoxia-inducible factor 1-alpha bHLH domain | E-value:4.7e-44 | Cond.E-value:1.7e-47 | Bit score:149.0
+Sequence:7 | Start:462 | End:547 | ID:PF08447.19 | Description:PAS fold | E-value:4e-21 | Cond.E-value:1.4e-24 | Bit score:75.6
+Sequence:7 | Start:449 | End:551 | ID:PF14598.13 | Description:PAS domain | E-value:1.4e-20 | Cond.E-value:4.9e-24 | Bit score:73.8
+Sequence:7 | Start:995 | End:1030 | ID:PF08778.16 | Description:HIF-1 alpha C terminal transactivation domain | E-value:4.3e-22 | Cond.E-value:1.5e-25 | Bit score:77.8
+Sequence:7 | Start:302 | End:357 | ID:PF00989.32 | Description:PAS fold | E-value:2.5e-05 | Cond.E-value:8.7e-09 | Bit score:24.8
+Sequence:7 | Start:459 | End:536 | ID:PF00989.32 | Description:PAS fold | E-value:5.8e-07 | Cond.E-value:2.1e-10 | Bit score:30.0
+Sequence:7 | Start:763 | End:788 | ID:PF11413.14 | Description:Hypoxia-inducible factor-1 | E-value:3.3e-14 | Cond.E-value:1.2e-17 | Bit score:52.4
+Sequence:8 | Start:1 | End:80 | ID:PF23171.1 | Description:Hypoxia-inducible factor 1-alpha bHLH domain | E-value:4.9e-50 | Cond.E-value:1.7e-53 | Bit score:168.2
+Sequence:8 | Start:254 | End:339 | ID:PF08447.19 | Description:PAS fold | E-value:2.8e-21 | Cond.E-value:9.9e-25 | Bit score:76.1
+Sequence:8 | Start:241 | End:343 | ID:PF14598.13 | Description:PAS domain | E-value:9.6e-21 | Cond.E-value:3.4e-24 | Bit score:74.3
+Sequence:8 | Start:756 | End:791 | ID:PF08778.16 | Description:HIF-1 alpha C terminal transactivation domain | E-value:3.2e-22 | Cond.E-value:1.1e-25 | Bit score:78.3
+Sequence:8 | Start:94 | End:149 | ID:PF00989.32 | Description:PAS fold | E-value:1.7e-05 | Cond.E-value:6.2e-09 | Bit score:25.2
+Sequence:8 | Start:251 | End:328 | ID:PF00989.32 | Description:PAS fold | E-value:4.1e-07 | Cond.E-value:1.4e-10 | Bit score:30.5
+Sequence:8 | Start:555 | End:580 | ID:PF11413.14 | Description:Hypoxia-inducible factor-1 | E-value:2.5e-14 | Cond.E-value:8.7e-18 | Bit score:52.8
+Sequence:8 | Start:254 | End:338 | ID:PF13426.14 | Description:PAS domain | E-value:8.8e-05 | Cond.E-value:3.1e-08 | Bit score:23.2
+Sequence:9 | Start:39 | End:107 | ID:PF23171.1 | Description:Hypoxia-inducible factor 1-alpha bHLH domain | E-value:5.7e-43 | Cond.E-value:2e-46 | Bit score:145.5
+Sequence:9 | Start:281 | End:366 | ID:PF08447.19 | Description:PAS fold | E-value:3.1e-21 | Cond.E-value:1.1e-24 | Bit score:75.9
+Sequence:9 | Start:268 | End:370 | ID:PF14598.13 | Description:PAS domain | E-value:1.1e-20 | Cond.E-value:3.7e-24 | Bit score:74.2
+Sequence:9 | Start:814 | End:849 | ID:PF08778.16 | Description:HIF-1 alpha C terminal transactivation domain | E-value:3.4e-22 | Cond.E-value:1.2e-25 | Bit score:78.1
+Sequence:9 | Start:121 | End:176 | ID:PF00989.32 | Description:PAS fold | E-value:1.9e-05 | Cond.E-value:6.8e-09 | Bit score:25.1
+Sequence:9 | Start:278 | End:355 | ID:PF00989.32 | Description:PAS fold | E-value:4.5e-07 | Cond.E-value:1.6e-10 | Bit score:30.3
+Sequence:9 | Start:582 | End:607 | ID:PF11413.14 | Description:Hypoxia-inducible factor-1 | E-value:2.7e-14 | Cond.E-value:9.5e-18 | Bit score:52.7
+Sequence:9 | Start:281 | End:365 | ID:PF13426.14 | Description:PAS domain | E-value:9.7e-05 | Cond.E-value:3.4e-08 | Bit score:23.1
+Sequence:10 | Start:1 | End:79 | ID:PF23171.1 | Description:Hypoxia-inducible factor 1-alpha bHLH domain | E-value:9.3e-50 | Cond.E-value:3.6e-53 | Bit score:167.3
+Sequence:10 | Start:254 | End:339 | ID:PF08447.19 | Description:PAS fold | E-value:3e-21 | Cond.E-value:1.2e-24 | Bit score:76.0
+Sequence:10 | Start:241 | End:343 | ID:PF14598.13 | Description:PAS domain | E-value:1.2e-20 | Cond.E-value:4.5e-24 | Bit score:74.0
+Sequence:10 | Start:787 | End:822 | ID:PF08778.16 | Description:HIF-1 alpha C terminal transactivation domain | E-value:3.3e-22 | Cond.E-value:1.3e-25 | Bit score:78.2
+Sequence:10 | Start:94 | End:149 | ID:PF00989.32 | Description:PAS fold | E-value:1.8e-05 | Cond.E-value:7.2e-09 | Bit score:25.2
+Sequence:10 | Start:251 | End:328 | ID:PF00989.32 | Description:PAS fold | E-value:4.3e-07 | Cond.E-value:1.7e-10 | Bit score:30.4
+Sequence:10 | Start:555 | End:580 | ID:PF11413.14 | Description:Hypoxia-inducible factor-1 | E-value:2.6e-14 | Cond.E-value:1e-17 | Bit score:52.7
+Sequence:11 | Start:1 | End:79 | ID:PF23171.1 | Description:Hypoxia-inducible factor 1-alpha bHLH domain | E-value:8.6e-50 | Cond.E-value:3.4e-53 | Bit score:167.4
+Sequence:11 | Start:254 | End:339 | ID:PF08447.19 | Description:PAS fold | E-value:2.8e-21 | Cond.E-value:1.1e-24 | Bit score:76.1
+Sequence:11 | Start:241 | End:343 | ID:PF14598.13 | Description:PAS domain | E-value:1.1e-20 | Cond.E-value:4.2e-24 | Bit score:74.1
+Sequence:11 | Start:746 | End:781 | ID:PF08778.16 | Description:HIF-1 alpha C terminal transactivation domain | E-value:3.1e-22 | Cond.E-value:1.2e-25 | Bit score:78.3
+Sequence:11 | Start:94 | End:149 | ID:PF00989.32 | Description:PAS fold | E-value:1.7e-05 | Cond.E-value:6.7e-09 | Bit score:25.3
+Sequence:11 | Start:251 | End:328 | ID:PF00989.32 | Description:PAS fold | E-value:4e-07 | Cond.E-value:1.6e-10 | Bit score:30.5
+Sequence:11 | Start:515 | End:539 | ID:PF11413.14 | Description:Hypoxia-inducible factor-1 | E-value:7.3e-14 | Cond.E-value:2.8e-17 | Bit score:51.3
+Sequence:12 | Start:31 | End:103 | ID:PF23171.1 | Description:Hypoxia-inducible factor 1-alpha bHLH domain | E-value:1.9e-43 | Cond.E-value:6.5e-47 | Bit score:147.1
+Sequence:12 | Start:277 | End:362 | ID:PF08447.19 | Description:PAS fold | E-value:3.1e-21 | Cond.E-value:1.1e-24 | Bit score:75.9
+Sequence:12 | Start:264 | End:366 | ID:PF14598.13 | Description:PAS domain | E-value:1.1e-20 | Cond.E-value:3.7e-24 | Bit score:74.2
+Sequence:12 | Start:810 | End:845 | ID:PF08778.16 | Description:HIF-1 alpha C terminal transactivation domain | E-value:2.6e-22 | Cond.E-value:9.2e-26 | Bit score:78.5
+Sequence:12 | Start:117 | End:172 | ID:PF00989.32 | Description:PAS fold | E-value:1.9e-05 | Cond.E-value:6.7e-09 | Bit score:25.1
+Sequence:12 | Start:274 | End:351 | ID:PF00989.32 | Description:PAS fold | E-value:4.5e-07 | Cond.E-value:1.6e-10 | Bit score:30.4
+Sequence:12 | Start:578 | End:603 | ID:PF11413.14 | Description:Hypoxia-inducible factor-1 | E-value:2.7e-14 | Cond.E-value:9.4e-18 | Bit score:52.7
+Sequence:12 | Start:277 | End:361 | ID:PF13426.14 | Description:PAS domain | E-value:9.6e-05 | Cond.E-value:3.4e-08 | Bit score:23.1
+Sequence:13 | Start:1 | End:81 | ID:PF23171.1 | Description:Hypoxia-inducible factor 1-alpha bHLH domain | E-value:6.1e-48 | Cond.E-value:2.4e-51 | Bit score:161.4
+Sequence:13 | Start:255 | End:340 | ID:PF08447.19 | Description:PAS fold | E-value:3e-21 | Cond.E-value:1.2e-24 | Bit score:76.0
+Sequence:13 | Start:242 | End:344 | ID:PF14598.13 | Description:PAS domain | E-value:1e-20 | Cond.E-value:4e-24 | Bit score:74.2
+Sequence:13 | Start:793 | End:828 | ID:PF08778.16 | Description:HIF-1 alpha C terminal transactivation domain | E-value:3.3e-22 | Cond.E-value:1.3e-25 | Bit score:78.2
+Sequence:13 | Start:95 | End:150 | ID:PF00989.32 | Description:PAS fold | E-value:1.6e-05 | Cond.E-value:6.2e-09 | Bit score:25.4
+Sequence:13 | Start:252 | End:329 | ID:PF00989.32 | Description:PAS fold | E-value:4.4e-07 | Cond.E-value:1.7e-10 | Bit score:30.4
+Sequence:13 | Start:556 | End:581 | ID:PF11413.14 | Description:Hypoxia-inducible factor-1 | E-value:2.2e-14 | Cond.E-value:8.7e-18 | Bit score:53.0
+Sequence:13 | Start:255 | End:339 | ID:PF13426.14 | Description:PAS domain | E-value:9.4e-05 | Cond.E-value:3.7e-08 | Bit score:23.1
+Sequence:14 | Start:1 | End:81 | ID:PF23171.1 | Description:Hypoxia-inducible factor 1-alpha bHLH domain | E-value:5.8e-48 | Cond.E-value:2.3e-51 | Bit score:161.5
+Sequence:14 | Start:255 | End:340 | ID:PF08447.19 | Description:PAS fold | E-value:3e-21 | Cond.E-value:1.2e-24 | Bit score:76.0
+Sequence:14 | Start:242 | End:344 | ID:PF14598.13 | Description:PAS domain | E-value:1e-20 | Cond.E-value:4e-24 | Bit score:74.2
+Sequence:14 | Start:786 | End:821 | ID:PF08778.16 | Description:HIF-1 alpha C terminal transactivation domain | E-value:8.7e-22 | Cond.E-value:3.4e-25 | Bit score:76.9
+Sequence:14 | Start:95 | End:150 | ID:PF00989.32 | Description:PAS fold | E-value:1.9e-05 | Cond.E-value:7.5e-09 | Bit score:25.1
+Sequence:14 | Start:252 | End:329 | ID:PF00989.32 | Description:PAS fold | E-value:4.3e-07 | Cond.E-value:1.7e-10 | Bit score:30.4
+Sequence:14 | Start:556 | End:581 | ID:PF11413.14 | Description:Hypoxia-inducible factor-1 | E-value:2.6e-14 | Cond.E-value:1e-17 | Bit score:52.7
+Sequence:14 | Start:255 | End:339 | ID:PF13426.14 | Description:PAS domain | E-value:9.3e-05 | Cond.E-value:3.6e-08 | Bit score:23.1
+Sequence:15 | Start:1 | End:81 | ID:PF23171.1 | Description:Hypoxia-inducible factor 1-alpha bHLH domain | E-value:6.3e-48 | Cond.E-value:2.7e-51 | Bit score:161.4
+Sequence:15 | Start:255 | End:340 | ID:PF08447.19 | Description:PAS fold | E-value:7.6e-21 | Cond.E-value:3.3e-24 | Bit score:74.7
+Sequence:15 | Start:242 | End:344 | ID:PF14598.13 | Description:PAS domain | E-value:3.9e-20 | Cond.E-value:1.7e-23 | Bit score:72.3
+Sequence:15 | Start:787 | End:822 | ID:PF08778.16 | Description:HIF-1 alpha C terminal transactivation domain | E-value:2.5e-22 | Cond.E-value:1.1e-25 | Bit score:78.6
+Sequence:15 | Start:95 | End:150 | ID:PF00989.32 | Description:PAS fold | E-value:1.9e-05 | Cond.E-value:8.3e-09 | Bit score:25.1
+Sequence:15 | Start:252 | End:331 | ID:PF00989.32 | Description:PAS fold | E-value:2.6e-07 | Cond.E-value:1.1e-10 | Bit score:31.1
+Sequence:15 | Start:554 | End:579 | ID:PF11413.14 | Description:Hypoxia-inducible factor-1 | E-value:2.6e-14 | Cond.E-value:1.1e-17 | Bit score:52.7
+Sequence:15 | Start:255 | End:339 | ID:PF13426.14 | Description:PAS domain | E-value:8.4e-05 | Cond.E-value:3.6e-08 | Bit score:23.3
+Sequence:16 | Start:56 | End:127 | ID:PF23171.1 | Description:Hypoxia-inducible factor 1-alpha bHLH domain | E-value:2.2e-43 | Cond.E-value:7.7e-47 | Bit score:146.9
+Sequence:16 | Start:301 | End:386 | ID:PF08447.19 | Description:PAS fold | E-value:3.2e-21 | Cond.E-value:1.1e-24 | Bit score:75.9
+Sequence:16 | Start:288 | End:390 | ID:PF14598.13 | Description:PAS domain | E-value:1.1e-20 | Cond.E-value:3.9e-24 | Bit score:74.1
+Sequence:16 | Start:835 | End:870 | ID:PF08778.16 | Description:HIF-1 alpha C terminal transactivation domain | E-value:3.5e-22 | Cond.E-value:1.2e-25 | Bit score:78.1
+Sequence:16 | Start:141 | End:196 | ID:PF00989.32 | Description:PAS fold | E-value:2.1e-05 | Cond.E-value:7.3e-09 | Bit score:25.0
+Sequence:16 | Start:298 | End:375 | ID:PF00989.32 | Description:PAS fold | E-value:4.7e-07 | Cond.E-value:1.6e-10 | Bit score:30.3
+Sequence:16 | Start:602 | End:627 | ID:PF11413.14 | Description:Hypoxia-inducible factor-1 | E-value:2.8e-14 | Cond.E-value:9.7e-18 | Bit score:52.6
+Sequence:16 | Start:301 | End:385 | ID:PF13426.14 | Description:PAS domain | E-value:0.0001 | Cond.E-value:3.5e-08 | Bit score:23.0
+Sequence:17 | Start:1 | End:81 | ID:PF23171.1 | Description:Hypoxia-inducible factor 1-alpha bHLH domain | E-value:3.2e-48 | Cond.E-value:1.2e-51 | Bit score:162.4
+Sequence:17 | Start:255 | End:340 | ID:PF08447.19 | Description:PAS fold | E-value:2.8e-21 | Cond.E-value:1.1e-24 | Bit score:76.1
+Sequence:17 | Start:242 | End:344 | ID:PF14598.13 | Description:PAS domain | E-value:9.5e-21 | Cond.E-value:3.7e-24 | Bit score:74.3
+Sequence:17 | Start:750 | End:785 | ID:PF08778.16 | Description:HIF-1 alpha C terminal transactivation domain | E-value:3.1e-22 | Cond.E-value:1.2e-25 | Bit score:78.3
+Sequence:17 | Start:95 | End:150 | ID:PF00989.32 | Description:PAS fold | E-value:1.8e-05 | Cond.E-value:7.1e-09 | Bit score:25.2
+Sequence:17 | Start:252 | End:329 | ID:PF00989.32 | Description:PAS fold | E-value:4.1e-07 | Cond.E-value:1.6e-10 | Bit score:30.5
+Sequence:17 | Start:516 | End:540 | ID:PF11413.14 | Description:Hypoxia-inducible factor-1 | E-value:7.3e-14 | Cond.E-value:2.9e-17 | Bit score:51.3
+Sequence:17 | Start:255 | End:339 | ID:PF13426.14 | Description:PAS domain | E-value:8.7e-05 | Cond.E-value:3.4e-08 | Bit score:23.2
+Sequence:18 | Start:1 | End:81 | ID:PF23171.1 | Description:Hypoxia-inducible factor 1-alpha bHLH domain | E-value:3.4e-48 | Cond.E-value:1.3e-51 | Bit score:162.3
+Sequence:18 | Start:255 | End:340 | ID:PF08447.19 | Description:PAS fold | E-value:3e-21 | Cond.E-value:1.2e-24 | Bit score:76.0
+Sequence:18 | Start:242 | End:344 | ID:PF14598.13 | Description:PAS domain | E-value:1e-20 | Cond.E-value:4e-24 | Bit score:74.2
+Sequence:18 | Start:789 | End:824 | ID:PF08778.16 | Description:HIF-1 alpha C terminal transactivation domain | E-value:3.3e-22 | Cond.E-value:1.3e-25 | Bit score:78.2
+Sequence:18 | Start:95 | End:150 | ID:PF00989.32 | Description:PAS fold | E-value:1.9e-05 | Cond.E-value:7.5e-09 | Bit score:25.1
+Sequence:18 | Start:252 | End:329 | ID:PF00989.32 | Description:PAS fold | E-value:4.3e-07 | Cond.E-value:1.7e-10 | Bit score:30.4
+Sequence:18 | Start:556 | End:581 | ID:PF11413.14 | Description:Hypoxia-inducible factor-1 | E-value:2.6e-14 | Cond.E-value:1e-17 | Bit score:52.7
+Sequence:18 | Start:255 | End:339 | ID:PF13426.14 | Description:PAS domain | E-value:9.3e-05 | Cond.E-value:3.6e-08 | Bit score:23.1
+Sequence:19 | Start:1 | End:80 | ID:PF23171.1 | Description:Hypoxia-inducible factor 1-alpha bHLH domain | E-value:5.1e-50 | Cond.E-value:2e-53 | Bit score:168.1
+Sequence:19 | Start:254 | End:339 | ID:PF08447.19 | Description:PAS fold | E-value:3e-21 | Cond.E-value:1.2e-24 | Bit score:76.0
+Sequence:19 | Start:241 | End:343 | ID:PF14598.13 | Description:PAS domain | E-value:1e-20 | Cond.E-value:4e-24 | Bit score:74.2
+Sequence:19 | Start:786 | End:821 | ID:PF08778.16 | Description:HIF-1 alpha C terminal transactivation domain | E-value:3.3e-22 | Cond.E-value:1.3e-25 | Bit score:78.2
+Sequence:19 | Start:94 | End:149 | ID:PF00989.32 | Description:PAS fold | E-value:1.9e-05 | Cond.E-value:7.5e-09 | Bit score:25.1
+Sequence:19 | Start:251 | End:328 | ID:PF00989.32 | Description:PAS fold | E-value:4.3e-07 | Cond.E-value:1.7e-10 | Bit score:30.4
+Sequence:19 | Start:555 | End:580 | ID:PF11413.14 | Description:Hypoxia-inducible factor-1 | E-value:2.6e-14 | Cond.E-value:1e-17 | Bit score:52.7
+Sequence:19 | Start:254 | End:338 | ID:PF13426.14 | Description:PAS domain | E-value:9.3e-05 | Cond.E-value:3.6e-08 | Bit score:23.1
+Sequence:20 | Start:1 | End:80 | ID:PF23171.1 | Description:Hypoxia-inducible factor 1-alpha bHLH domain | E-value:9.5e-48 | Cond.E-value:3.7e-51 | Bit score:160.8
+Sequence:20 | Start:271 | End:356 | ID:PF08447.19 | Description:PAS fold | E-value:3.1e-21 | Cond.E-value:1.2e-24 | Bit score:75.9
+Sequence:20 | Start:258 | End:360 | ID:PF14598.13 | Description:PAS domain | E-value:1e-20 | Cond.E-value:4.1e-24 | Bit score:74.2
+Sequence:20 | Start:803 | End:838 | ID:PF08778.16 | Description:HIF-1 alpha C terminal transactivation domain | E-value:2.6e-22 | Cond.E-value:1e-25 | Bit score:78.5
+Sequence:20 | Start:95 | End:150 | ID:PF00989.32 | Description:PAS fold | E-value:3.6e-05 | Cond.E-value:1.4e-08 | Bit score:24.2
+Sequence:20 | Start:268 | End:345 | ID:PF00989.32 | Description:PAS fold | E-value:4.4e-07 | Cond.E-value:1.7e-10 | Bit score:30.4
+Sequence:20 | Start:572 | End:597 | ID:PF11413.14 | Description:Hypoxia-inducible factor-1 | E-value:2.2e-14 | Cond.E-value:8.8e-18 | Bit score:52.9
+Sequence:20 | Start:271 | End:355 | ID:PF13426.14 | Description:PAS domain | E-value:9.5e-05 | Cond.E-value:3.7e-08 | Bit score:23.1
+Sequence:21 | Start:1 | End:81 | ID:PF23171.1 | Description:Hypoxia-inducible factor 1-alpha bHLH domain | E-value:6.3e-48 | Cond.E-value:2.5e-51 | Bit score:161.4
+Sequence:21 | Start:255 | End:340 | ID:PF08447.19 | Description:PAS fold | E-value:3e-21 | Cond.E-value:1.2e-24 | Bit score:76.0
+Sequence:21 | Start:242 | End:344 | ID:PF14598.13 | Description:PAS domain | E-value:1e-20 | Cond.E-value:4e-24 | Bit score:74.2
+Sequence:21 | Start:787 | End:822 | ID:PF08778.16 | Description:HIF-1 alpha C terminal transactivation domain | E-value:2.5e-22 | Cond.E-value:9.9e-26 | Bit score:78.6
+Sequence:21 | Start:95 | End:150 | ID:PF00989.32 | Description:PAS fold | E-value:2e-05 | Cond.E-value:8e-09 | Bit score:25.0
+Sequence:21 | Start:252 | End:329 | ID:PF00989.32 | Description:PAS fold | E-value:4.3e-07 | Cond.E-value:1.7e-10 | Bit score:30.4
+Sequence:21 | Start:556 | End:581 | ID:PF11413.14 | Description:Hypoxia-inducible factor-1 | E-value:2.6e-14 | Cond.E-value:1e-17 | Bit score:52.7
+Sequence:21 | Start:255 | End:339 | ID:PF13426.14 | Description:PAS domain | E-value:9.3e-05 | Cond.E-value:3.6e-08 | Bit score:23.1
+Sequence:22 | Start:28 | End:99 | ID:PF23171.1 | Description:Hypoxia-inducible factor 1-alpha bHLH domain | E-value:1.7e-43 | Cond.E-value:6e-47 | Bit score:147.2
+Sequence:22 | Start:273 | End:358 | ID:PF08447.19 | Description:PAS fold | E-value:3.1e-21 | Cond.E-value:1.1e-24 | Bit score:75.9
+Sequence:22 | Start:260 | End:362 | ID:PF14598.13 | Description:PAS domain | E-value:1.1e-20 | Cond.E-value:3.7e-24 | Bit score:74.2
+Sequence:22 | Start:810 | End:845 | ID:PF08778.16 | Description:HIF-1 alpha C terminal transactivation domain | E-value:2.6e-22 | Cond.E-value:9.2e-26 | Bit score:78.5
+Sequence:22 | Start:113 | End:168 | ID:PF00989.32 | Description:PAS fold | E-value:2e-05 | Cond.E-value:7e-09 | Bit score:25.1
+Sequence:22 | Start:270 | End:347 | ID:PF00989.32 | Description:PAS fold | E-value:4.5e-07 | Cond.E-value:1.6e-10 | Bit score:30.4
+Sequence:22 | Start:574 | End:599 | ID:PF11413.14 | Description:Hypoxia-inducible factor-1 | E-value:2.7e-14 | Cond.E-value:9.4e-18 | Bit score:52.7
+Sequence:22 | Start:273 | End:357 | ID:PF13426.14 | Description:PAS domain | E-value:9.6e-05 | Cond.E-value:3.4e-08 | Bit score:23.1
+Sequence:23 | Start:1 | End:80 | ID:PF23171.1 | Description:Hypoxia-inducible factor 1-alpha bHLH domain | E-value:9.6e-50 | Cond.E-value:3.8e-53 | Bit score:167.2
+Sequence:23 | Start:254 | End:339 | ID:PF08447.19 | Description:PAS fold | E-value:3e-21 | Cond.E-value:1.2e-24 | Bit score:76.0
+Sequence:23 | Start:241 | End:343 | ID:PF14598.13 | Description:PAS domain | E-value:1e-20 | Cond.E-value:3.9e-24 | Bit score:74.2
+Sequence:23 | Start:785 | End:820 | ID:PF08778.16 | Description:HIF-1 alpha C terminal transactivation domain | E-value:2.4e-21 | Cond.E-value:9.4e-25 | Bit score:75.4
+Sequence:23 | Start:94 | End:163 | ID:PF00989.32 | Description:PAS fold | E-value:1e-05 | Cond.E-value:4e-09 | Bit score:26.0
+Sequence:23 | Start:251 | End:328 | ID:PF00989.32 | Description:PAS fold | E-value:4.3e-07 | Cond.E-value:1.7e-10 | Bit score:30.4
+Sequence:23 | Start:555 | End:580 | ID:PF11413.14 | Description:Hypoxia-inducible factor-1 | E-value:2.6e-14 | Cond.E-value:1e-17 | Bit score:52.7
+Sequence:23 | Start:254 | End:338 | ID:PF13426.14 | Description:PAS domain | E-value:9.2e-05 | Cond.E-value:3.6e-08 | Bit score:23.1
+Sequence:24 | Start:1 | End:80 | ID:PF23171.1 | Description:Hypoxia-inducible factor 1-alpha bHLH domain | E-value:5.1e-50 | Cond.E-value:2e-53 | Bit score:168.1
+Sequence:24 | Start:254 | End:339 | ID:PF08447.19 | Description:PAS fold | E-value:3e-21 | Cond.E-value:1.2e-24 | Bit score:76.0
+Sequence:24 | Start:241 | End:343 | ID:PF14598.13 | Description:PAS domain | E-value:1e-20 | Cond.E-value:4e-24 | Bit score:74.2
+Sequence:24 | Start:790 | End:825 | ID:PF08778.16 | Description:HIF-1 alpha C terminal transactivation domain | E-value:3.3e-22 | Cond.E-value:1.3e-25 | Bit score:78.2
+Sequence:24 | Start:94 | End:149 | ID:PF00989.32 | Description:PAS fold | E-value:1.9e-05 | Cond.E-value:7.6e-09 | Bit score:25.1
+Sequence:24 | Start:251 | End:328 | ID:PF00989.32 | Description:PAS fold | E-value:4.4e-07 | Cond.E-value:1.7e-10 | Bit score:30.4
+Sequence:24 | Start:555 | End:580 | ID:PF11413.14 | Description:Hypoxia-inducible factor-1 | E-value:2.6e-14 | Cond.E-value:1e-17 | Bit score:52.7
+Sequence:24 | Start:254 | End:338 | ID:PF13426.14 | Description:PAS domain | E-value:9.3e-05 | Cond.E-value:3.7e-08 | Bit score:23.1
+Sequence:25 | Start:14 | End:83 | ID:PF23171.1 | Description:Hypoxia-inducible factor 1-alpha bHLH domain | E-value:3.2e-43 | Cond.E-value:1e-46 | Bit score:146.3
+Sequence:25 | Start:257 | End:342 | ID:PF08447.19 | Description:PAS fold | E-value:3.5e-21 | Cond.E-value:1.1e-24 | Bit score:75.8
+Sequence:25 | Start:244 | End:346 | ID:PF14598.13 | Description:PAS domain | E-value:1.8e-20 | Cond.E-value:5.7e-24 | Bit score:73.4
+Sequence:25 | Start:97 | End:152 | ID:PF00989.32 | Description:PAS fold | E-value:1.5e-05 | Cond.E-value:4.8e-09 | Bit score:25.4
+Sequence:25 | Start:254 | End:331 | ID:PF00989.32 | Description:PAS fold | E-value:3.5e-07 | Cond.E-value:1.1e-10 | Bit score:30.7
+Sequence:25 | Start:558 | End:583 | ID:PF11413.14 | Description:Hypoxia-inducible factor-1 | E-value:2.2e-14 | Cond.E-value:6.9e-18 | Bit score:53.0
+Sequence:26 | Start:1 | End:80 | ID:PF23171.1 | Description:Hypoxia-inducible factor 1-alpha bHLH domain | E-value:4.4e-50 | Cond.E-value:1.6e-53 | Bit score:168.3
+Sequence:26 | Start:280 | End:365 | ID:PF08447.19 | Description:PAS fold | E-value:3.6e-21 | Cond.E-value:1.3e-24 | Bit score:75.7
+Sequence:26 | Start:267 | End:369 | ID:PF14598.13 | Description:PAS domain | E-value:1.9e-20 | Cond.E-value:6.7e-24 | Bit score:73.3
+Sequence:26 | Start:94 | End:149 | ID:PF00989.32 | Description:PAS fold | E-value:2e-05 | Cond.E-value:7.2e-09 | Bit score:25.0
+Sequence:26 | Start:277 | End:354 | ID:PF00989.32 | Description:PAS fold | E-value:3.6e-07 | Cond.E-value:1.3e-10 | Bit score:30.6
+Sequence:26 | Start:581 | End:606 | ID:PF11413.14 | Description:Hypoxia-inducible factor-1 | E-value:2.3e-14 | Cond.E-value:8.1e-18 | Bit score:52.9
+Sequence:27 | Start:1 | End:80 | ID:PF23171.1 | Description:Hypoxia-inducible factor 1-alpha bHLH domain | E-value:4.2e-50 | Cond.E-value:1.5e-53 | Bit score:168.4
+Sequence:27 | Start:254 | End:339 | ID:PF08447.19 | Description:PAS fold | E-value:2.4e-21 | Cond.E-value:8.6e-25 | Bit score:76.3
+Sequence:27 | Start:241 | End:343 | ID:PF14598.13 | Description:PAS domain | E-value:8.2e-21 | Cond.E-value:2.9e-24 | Bit score:74.5
+Sequence:27 | Start:94 | End:149 | ID:PF00989.32 | Description:PAS fold | E-value:1.5e-05 | Cond.E-value:5.4e-09 | Bit score:25.4
+Sequence:27 | Start:251 | End:328 | ID:PF00989.32 | Description:PAS fold | E-value:3.6e-07 | Cond.E-value:1.3e-10 | Bit score:30.7
+Sequence:27 | Start:555 | End:580 | ID:PF11413.14 | Description:Hypoxia-inducible factor-1 | E-value:2.2e-14 | Cond.E-value:7.7e-18 | Bit score:53.0
+Sequence:27 | Start:254 | End:338 | ID:PF13426.14 | Description:PAS domain | E-value:7.6e-05 | Cond.E-value:2.7e-08 | Bit score:23.4
+Sequence:28 | Start:5 | End:74 | ID:PF23171.1 | Description:Hypoxia-inducible factor 1-alpha bHLH domain | E-value:4.7e-43 | Cond.E-value:1.6e-46 | Bit score:145.8
+Sequence:28 | Start:745 | End:780 | ID:PF08778.16 | Description:HIF-1 alpha C terminal transactivation domain | E-value:2.4e-22 | Cond.E-value:8.4e-26 | Bit score:78.6
+Sequence:28 | Start:514 | End:539 | ID:PF11413.14 | Description:Hypoxia-inducible factor-1 | E-value:2.4e-14 | Cond.E-value:8.6e-18 | Bit score:52.8
+Sequence:28 | Start:252 | End:298 | ID:PF08447.19 | Description:PAS fold | E-value:3.3e-08 | Cond.E-value:1.1e-11 | Bit score:34.2
+Sequence:28 | Start:254 | End:302 | ID:PF14598.13 | Description:PAS domain | E-value:2.2e-05 | Cond.E-value:7.7e-09 | Bit score:24.9
+Sequence:28 | Start:88 | End:144 | ID:PF00989.32 | Description:PAS fold | E-value:1.9e-05 | Cond.E-value:6.7e-09 | Bit score:25.1
+Sequence:29 | Start:1 | End:80 | ID:PF23171.1 | Description:Hypoxia-inducible factor 1-alpha bHLH domain | E-value:5.1e-50 | Cond.E-value:2e-53 | Bit score:168.1
+Sequence:29 | Start:254 | End:339 | ID:PF08447.19 | Description:PAS fold | E-value:3e-21 | Cond.E-value:1.2e-24 | Bit score:76.0
+Sequence:29 | Start:241 | End:343 | ID:PF14598.13 | Description:PAS domain | E-value:1e-20 | Cond.E-value:4e-24 | Bit score:74.2
+Sequence:29 | Start:786 | End:821 | ID:PF08778.16 | Description:HIF-1 alpha C terminal transactivation domain | E-value:2.5e-22 | Cond.E-value:9.9e-26 | Bit score:78.6
+Sequence:29 | Start:94 | End:149 | ID:PF00989.32 | Description:PAS fold | E-value:1.9e-05 | Cond.E-value:7.5e-09 | Bit score:25.1
+Sequence:29 | Start:251 | End:328 | ID:PF00989.32 | Description:PAS fold | E-value:4.3e-07 | Cond.E-value:1.7e-10 | Bit score:30.4
+Sequence:29 | Start:555 | End:580 | ID:PF11413.14 | Description:Hypoxia-inducible factor-1 | E-value:2.6e-14 | Cond.E-value:1e-17 | Bit score:52.7
+Sequence:29 | Start:254 | End:338 | ID:PF13426.14 | Description:PAS domain | E-value:9.3e-05 | Cond.E-value:3.6e-08 | Bit score:23.1
+Sequence:30 | Start:1 | End:81 | ID:PF23171.1 | Description:Hypoxia-inducible factor 1-alpha bHLH domain | E-value:2.6e-47 | Cond.E-value:1.1e-50 | Bit score:159.4
+Sequence:30 | Start:255 | End:340 | ID:PF08447.19 | Description:PAS fold | E-value:6.4e-21 | Cond.E-value:2.8e-24 | Bit score:74.9
+Sequence:30 | Start:242 | End:344 | ID:PF14598.13 | Description:PAS domain | E-value:2.9e-20 | Cond.E-value:1.2e-23 | Bit score:72.7
+Sequence:30 | Start:782 | End:817 | ID:PF08778.16 | Description:HIF-1 alpha C terminal transactivation domain | E-value:3.3e-22 | Cond.E-value:1.4e-25 | Bit score:78.2
+Sequence:30 | Start:95 | End:150 | ID:PF00989.32 | Description:PAS fold | E-value:2.4e-05 | Cond.E-value:1e-08 | Bit score:24.8
+Sequence:30 | Start:252 | End:329 | ID:PF00989.32 | Description:PAS fold | E-value:6.5e-07 | Cond.E-value:2.8e-10 | Bit score:29.8
+Sequence:30 | Start:556 | End:581 | ID:PF11413.14 | Description:Hypoxia-inducible factor-1 | E-value:2.2e-14 | Cond.E-value:9.3e-18 | Bit score:53.0
+Sequence:31 | Start:28 | End:97 | ID:PF23171.1 | Description:Hypoxia-inducible factor 1-alpha bHLH domain | E-value:4e-43 | Cond.E-value:1.4e-46 | Bit score:146.0
+Sequence:31 | Start:271 | End:356 | ID:PF08447.19 | Description:PAS fold | E-value:2.1e-21 | Cond.E-value:7.6e-25 | Bit score:76.4
+Sequence:31 | Start:258 | End:360 | ID:PF14598.13 | Description:PAS domain | E-value:6.6e-21 | Cond.E-value:2.3e-24 | Bit score:74.8
+Sequence:31 | Start:804 | End:839 | ID:PF08778.16 | Description:HIF-1 alpha C terminal transactivation domain | E-value:2.6e-22 | Cond.E-value:9.2e-26 | Bit score:78.5
+Sequence:31 | Start:111 | End:166 | ID:PF00989.32 | Description:PAS fold | E-value:2.1e-05 | Cond.E-value:7.6e-09 | Bit score:24.9
+Sequence:31 | Start:268 | End:345 | ID:PF00989.32 | Description:PAS fold | E-value:2.9e-07 | Cond.E-value:1e-10 | Bit score:30.9
+Sequence:31 | Start:572 | End:597 | ID:PF11413.14 | Description:Hypoxia-inducible factor-1 | E-value:2.7e-14 | Cond.E-value:9.3e-18 | Bit score:52.7
+Sequence:31 | Start:271 | End:355 | ID:PF13426.14 | Description:PAS domain | E-value:6.3e-05 | Cond.E-value:2.2e-08 | Bit score:23.7
+Sequence:32 | Start:1 | End:81 | ID:PF23171.1 | Description:Hypoxia-inducible factor 1-alpha bHLH domain | E-value:3.4e-48 | Cond.E-value:1.3e-51 | Bit score:162.3
+Sequence:32 | Start:255 | End:340 | ID:PF08447.19 | Description:PAS fold | E-value:3e-21 | Cond.E-value:1.2e-24 | Bit score:76.0
+Sequence:32 | Start:242 | End:344 | ID:PF14598.13 | Description:PAS domain | E-value:1e-20 | Cond.E-value:4e-24 | Bit score:74.2
+Sequence:32 | Start:786 | End:821 | ID:PF08778.16 | Description:HIF-1 alpha C terminal transactivation domain | E-value:8.9e-22 | Cond.E-value:3.5e-25 | Bit score:76.8
+Sequence:32 | Start:95 | End:150 | ID:PF00989.32 | Description:PAS fold | E-value:1.9e-05 | Cond.E-value:7.5e-09 | Bit score:25.1
+Sequence:32 | Start:252 | End:329 | ID:PF00989.32 | Description:PAS fold | E-value:4.3e-07 | Cond.E-value:1.7e-10 | Bit score:30.4
+Sequence:32 | Start:553 | End:577 | ID:PF11413.14 | Description:Hypoxia-inducible factor-1 | E-value:3.5e-14 | Cond.E-value:1.4e-17 | Bit score:52.3
+Sequence:32 | Start:255 | End:339 | ID:PF13426.14 | Description:PAS domain | E-value:9.3e-05 | Cond.E-value:3.6e-08 | Bit score:23.1
+Sequence:33 | Start:1 | End:81 | ID:PF23171.1 | Description:Hypoxia-inducible factor 1-alpha bHLH domain | E-value:5.9e-48 | Cond.E-value:2.3e-51 | Bit score:161.5
+Sequence:33 | Start:255 | End:340 | ID:PF08447.19 | Description:PAS fold | E-value:2.8e-21 | Cond.E-value:1.1e-24 | Bit score:76.1
+Sequence:33 | Start:242 | End:344 | ID:PF14598.13 | Description:PAS domain | E-value:9.5e-21 | Cond.E-value:3.7e-24 | Bit score:74.3
+Sequence:33 | Start:749 | End:784 | ID:PF08778.16 | Description:HIF-1 alpha C terminal transactivation domain | E-value:8.4e-22 | Cond.E-value:3.3e-25 | Bit score:76.9
+Sequence:33 | Start:95 | End:150 | ID:PF00989.32 | Description:PAS fold | E-value:1.8e-05 | Cond.E-value:7.1e-09 | Bit score:25.2
+Sequence:33 | Start:252 | End:329 | ID:PF00989.32 | Description:PAS fold | E-value:4.1e-07 | Cond.E-value:1.6e-10 | Bit score:30.5
+Sequence:33 | Start:516 | End:540 | ID:PF11413.14 | Description:Hypoxia-inducible factor-1 | E-value:7.3e-14 | Cond.E-value:2.9e-17 | Bit score:51.3
+Sequence:33 | Start:255 | End:339 | ID:PF13426.14 | Description:PAS domain | E-value:8.7e-05 | Cond.E-value:3.4e-08 | Bit score:23.2
+Sequence:34 | Start:40 | End:108 | ID:PF23171.1 | Description:Hypoxia-inducible factor 1-alpha bHLH domain | E-value:4.2e-43 | Cond.E-value:1.3e-46 | Bit score:146.0
+Sequence:34 | Start:282 | End:367 | ID:PF08447.19 | Description:PAS fold | E-value:1.2e-21 | Cond.E-value:3.6e-25 | Bit score:77.3
+Sequence:34 | Start:269 | End:371 | ID:PF14598.13 | Description:PAS domain | E-value:7.7e-21 | Cond.E-value:2.4e-24 | Bit score:74.6
+Sequence:34 | Start:122 | End:177 | ID:PF00989.32 | Description:PAS fold | E-value:1.8e-05 | Cond.E-value:5.8e-09 | Bit score:25.2
+Sequence:34 | Start:279 | End:357 | ID:PF00989.32 | Description:PAS fold | E-value:3.2e-07 | Cond.E-value:1e-10 | Bit score:30.8
+Sequence:34 | Start:583 | End:608 | ID:PF11413.14 | Description:Hypoxia-inducible factor-1 | E-value:2.5e-14 | Cond.E-value:7.8e-18 | Bit score:52.8
+Sequence:34 | Start:282 | End:366 | ID:PF13426.14 | Description:PAS domain | E-value:8e-05 | Cond.E-value:2.5e-08 | Bit score:23.4
+Sequence:35 | Start:1 | End:79 | ID:PF23171.1 | Description:Hypoxia-inducible factor 1-alpha bHLH domain | E-value:2.8e-48 | Cond.E-value:9.8e-52 | Bit score:162.6
+Sequence:35 | Start:254 | End:339 | ID:PF08447.19 | Description:PAS fold | E-value:3e-21 | Cond.E-value:1e-24 | Bit score:76.0
+Sequence:35 | Start:241 | End:343 | ID:PF14598.13 | Description:PAS domain | E-value:1e-20 | Cond.E-value:3.6e-24 | Bit score:74.2
+Sequence:35 | Start:785 | End:820 | ID:PF08778.16 | Description:HIF-1 alpha C terminal transactivation domain | E-value:4.6e-20 | Cond.E-value:1.6e-23 | Bit score:71.3
+Sequence:35 | Start:94 | End:154 | ID:PF00989.32 | Description:PAS fold | E-value:2.1e-05 | Cond.E-value:7.5e-09 | Bit score:25.0
+Sequence:35 | Start:251 | End:328 | ID:PF00989.32 | Description:PAS fold | E-value:4.3e-07 | Cond.E-value:1.5e-10 | Bit score:30.4
+Sequence:35 | Start:561 | End:586 | ID:PF11413.14 | Description:Hypoxia-inducible factor-1 | E-value:2.6e-14 | Cond.E-value:9.1e-18 | Bit score:52.7
+Sequence:35 | Start:254 | End:338 | ID:PF13426.14 | Description:PAS domain | E-value:9.2e-05 | Cond.E-value:3.3e-08 | Bit score:23.1
+Sequence:36 | Start:24 | End:91 | ID:PF23171.1 | Description:Hypoxia-inducible factor 1-alpha bHLH domain | E-value:3.7e-42 | Cond.E-value:1.4e-45 | Bit score:142.9
+Sequence:36 | Start:266 | End:351 | ID:PF08447.19 | Description:PAS fold | E-value:3e-21 | Cond.E-value:1.2e-24 | Bit score:76.0
+Sequence:36 | Start:253 | End:355 | ID:PF14598.13 | Description:PAS domain | E-value:1e-20 | Cond.E-value:4e-24 | Bit score:74.2
+Sequence:36 | Start:787 | End:821 | ID:PF08778.16 | Description:HIF-1 alpha C terminal transactivation domain | E-value:2.3e-19 | Cond.E-value:9e-23 | Bit score:69.1
+Sequence:36 | Start:106 | End:166 | ID:PF00989.32 | Description:PAS fold | E-value:2.1e-05 | Cond.E-value:8.4e-09 | Bit score:25.0
+Sequence:36 | Start:263 | End:340 | ID:PF00989.32 | Description:PAS fold | E-value:4.3e-07 | Cond.E-value:1.7e-10 | Bit score:30.4
+Sequence:36 | Start:562 | End:587 | ID:PF11413.14 | Description:Hypoxia-inducible factor-1 | E-value:2.6e-14 | Cond.E-value:1e-17 | Bit score:52.7
+Sequence:36 | Start:266 | End:350 | ID:PF13426.14 | Description:PAS domain | E-value:9.3e-05 | Cond.E-value:3.6e-08 | Bit score:23.1
+Sequence:37 | Start:28 | End:95 | ID:PF23171.1 | Description:Hypoxia-inducible factor 1-alpha bHLH domain | E-value:7.1e-41 | Cond.E-value:2.5e-44 | Bit score:138.8
+Sequence:37 | Start:270 | End:355 | ID:PF08447.19 | Description:PAS fold | E-value:3e-21 | Cond.E-value:1e-24 | Bit score:76.0
+Sequence:37 | Start:257 | End:359 | ID:PF14598.13 | Description:PAS domain | E-value:9e-21 | Cond.E-value:3.2e-24 | Bit score:74.4
+Sequence:37 | Start:788 | End:823 | ID:PF08778.16 | Description:HIF-1 alpha C terminal transactivation domain | E-value:5.1e-22 | Cond.E-value:1.8e-25 | Bit score:77.6
+Sequence:37 | Start:110 | End:175 | ID:PF00989.32 | Description:PAS fold | E-value:3.7e-05 | Cond.E-value:1.3e-08 | Bit score:24.2
+Sequence:37 | Start:267 | End:344 | ID:PF00989.32 | Description:PAS fold | E-value:4.3e-07 | Cond.E-value:1.5e-10 | Bit score:30.4
+Sequence:37 | Start:571 | End:595 | ID:PF11413.14 | Description:Hypoxia-inducible factor-1 | E-value:3.5e-14 | Cond.E-value:1.2e-17 | Bit score:52.3
+Sequence:37 | Start:270 | End:354 | ID:PF13426.14 | Description:PAS domain | E-value:9.8e-05 | Cond.E-value:3.5e-08 | Bit score:23.1
