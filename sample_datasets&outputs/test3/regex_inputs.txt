@@ -1,0 +1,9 @@
+...([ST])P.. 
+[VILMAFP](K).E
+S..([ST])...
+[VILMFT]K.EP.{2,3}[DE] 
+[IL]A(P).{6,8}[FLIVM].[FLIVM]
+...([ST])P.[KR] 
+[EDST].{0,2}[WFY][^RKPGWFY][^PG][ILVFM]((.{0,4}[PLAFIVMY])|($)|(.{0,3}[ED]))
+[EDST].{0,3}[FL].[ILV][^D][RK][^PD][^EDWNG]((.{0,3}[KRH])|.)
+[^R]..((.[ILMVF])|([ILMVF].))[^P][^P][ILVM].{4,7}L(([KR].)|(NK))[VATIGS]
