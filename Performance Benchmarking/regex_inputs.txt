@@ -1,0 +1,7 @@
+[EDST].{0,3}[FL].[ILV][^D][RK][^PD][^EDWNG]((.{0,3}[KRH])|.)
+(.|([KRH].{0,3}))[^EDWNSG][^D][RK][^D]L.{0,1}[FL].{0,3}[EDST]
+[KR]{0,2}[KR].{0,2}[KR].{2,4}[ILVM].[ILVF]
+[EDST].{0,2}[WFY][^RKPGWFY][^PG][ILVFM]((.{0,4}[PLAFIVMY])|($)|(.{0,3}[ED]))
+[^R]..((.[ILMVF])|([ILMVF].))[^P][^P][ILVM].{4,7}L(([KR].)|(NK))[VATIGS]
+([DEQ].{0,1}[LIM].{2,3}[LIVMF][^P]{2,3}[LMVF].[LMIV].{0,3}[DE])|([DE].{0,1}[LIM].{2,3}[LIVMF][^P]{2,3}[LMVF].[LMIV].{0,3}[DEQ])
+[KR][KR].{7,15}[^DE]((K[RK])|(RK))(([^DE][KR])|([KR][^DE]))[^DE]
