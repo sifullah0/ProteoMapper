@@ -108,11 +108,79 @@ def detect_header_row(df):
     """Detect the header row in the dataframe"""
     for index, row in df.iterrows():
         row_normalized = row.astype(str).str.replace(r"\s+", " ", regex=True).str.strip().str.lower()
-        if ('protein sequences' in row_normalized.values) and (
-            'gene name' in row_normalized.values or 'gene id' in row_normalized.values
-        ):
-            return index
+        if 'protein sequences' in row_normalized.values:
+            # Check if any valid identifier column exists
+            valid_identifiers = ['gene name', 'gene id', 'protein name', 'protein id']
+            if any(identifier in row_normalized.values for identifier in valid_identifiers):
+                return index
     return None
+
+def read_fasta_file(fasta_file):
+    """Read FASTA file and convert to DataFrame format compatible with Excel pipeline"""
+    read_start = time.time()
+    
+    sequences = []
+    current_id = None
+    current_name = None
+    current_seq = []
+    
+    try:
+        with open(fasta_file, 'r') as f:
+            for line in f:
+                line = line.strip()
+                if line.startswith('>'):
+                    # Save previous sequence if exists
+                    if current_id is not None:
+                        sequences.append({
+                            'Protein ID': current_id,
+                            'Protein Name': current_name,
+                            'Protein Sequences': ''.join(current_seq)
+                        })
+                    
+                    # Parse header line: >ID Name or >ID|Name or >ID
+                    header = line[1:].strip()
+                    parts = header.split(None, 1)  # Split on first whitespace
+                    
+                    if len(parts) >= 1:
+                        # Handle formats like "sp|P12345|NAME" or just "P12345"
+                        if '|' in parts[0]:
+                            id_parts = parts[0].split('|')
+                            current_id = id_parts[1] if len(id_parts) > 1 else id_parts[0]
+                        else:
+                            current_id = parts[0]
+                        
+                        # Use the rest as name, or use ID if no name present
+                        current_name = parts[1] if len(parts) > 1 else current_id
+                    else:
+                        current_id = header
+                        current_name = header
+                    
+                    current_seq = []
+                elif line:
+                    current_seq.append(line)
+            
+            # Save last sequence
+            if current_id is not None:
+                sequences.append({
+                    'Protein ID': current_id,
+                    'Protein Name': current_name,
+                    'Protein Sequences': ''.join(current_seq)
+                })
+        
+        if not sequences:
+            raise FileReadError("No sequences found in FASTA file")
+        
+        # Create DataFrame
+        df = pd.DataFrame(sequences)
+        
+        read_time = time.time() - read_start
+        print(f"  ⏱️  FASTA read time: {read_time:.3f} seconds")
+        print(f"  📊 Loaded {len(df)} sequences from FASTA file")
+        
+        return df
+        
+    except Exception as e:
+        raise FileReadError(f"Failed to read FASTA file: {str(e)}")
 
 def read_and_preprocess_data(input_excel_file):
     """Read Excel file and preprocess data"""
@@ -126,7 +194,7 @@ def read_and_preprocess_data(input_excel_file):
     # Find the header row dynamically
     header_row_index = detect_header_row(df_raw)
     if header_row_index is None:
-        raise HeaderNotFoundError("Could not find the correct header row. Expected columns: 'Protein Sequences' and 'Gene Name' or 'Gene ID'")
+        raise HeaderNotFoundError("Could not find the correct header row. Expected columns: 'Protein Sequences' and at least one identifier column ('Gene Name', 'Gene ID', 'Protein Name', or 'Protein ID')")
     
     # Read the file again using the detected header row
     try:
@@ -141,8 +209,19 @@ def read_and_preprocess_data(input_excel_file):
 
 def clean_and_process_sequences(df):
     """Clean and process protein sequences"""
+    # Store original column names for identifier columns before normalization
+    original_headers = {}
+    for col in df.columns:
+        col_normalized = str(col).replace(r"\s+", " ").strip().lower()
+        col_normalized = ' '.join(col_normalized.split())  # Remove extra spaces
+        if col_normalized in ['gene name', 'gene id', 'protein name', 'protein id']:
+            original_headers[col_normalized] = col
+    
     # Normalize column names
     df.columns = df.columns.str.replace(r"\s+", " ", regex=True).str.strip().str.lower()
+    
+    # Store the original headers in the dataframe for later use
+    df.attrs['original_headers'] = original_headers
     
     # Process sequences
     df['protein sequences'] = df['protein sequences'].fillna("").astype(str)
@@ -166,19 +245,29 @@ def prepare_final_dataframe(df):
     sequence_columns = [str(i + 1) for i in range(max_length)]
     df_sequence_split = pd.DataFrame(split_sequences, columns=sequence_columns)
     
-    # Prepare filtered dataframe
+    # Prepare filtered dataframe - check for all possible identifier columns
+    identifier_cols = ['gene name', 'gene id', 'protein name', 'protein id']
+    available_cols = [col for col in identifier_cols if col in df.columns]
+    
     df_filtered = (
-        df[[col for col in ['gene name','gene id'] if col in df.columns]]
+        df[available_cols]
         .replace("", np.nan)
         .dropna(axis=1, how='all')
     )
     
-    # Rename columns
+    # Get original headers if available
+    original_headers = df.attrs.get('original_headers', {})
+    
+    # Rename columns - use original headers if available, otherwise use standardized format
     rename_map = {}
     if 'gene name' in df_filtered.columns:
-        rename_map['gene name'] = 'Gene Name'
+        rename_map['gene name'] = original_headers.get('gene name', 'Gene Name')
     if 'gene id' in df_filtered.columns:
-        rename_map['gene id'] = 'Gene ID'
+        rename_map['gene id'] = original_headers.get('gene id', 'Gene ID')
+    if 'protein name' in df_filtered.columns:
+        rename_map['protein name'] = original_headers.get('protein name', 'Protein Name')
+    if 'protein id' in df_filtered.columns:
+        rename_map['protein id'] = original_headers.get('protein id', 'Protein ID')
     df_filtered = df_filtered.rename(columns=rename_map)
     
     # Merge with the split sequence matrix
@@ -395,11 +484,11 @@ def apply_position_highlights(ws, highlight_cols, leading_columns_count, styles)
     print(f"  ⏱️  Position highlighting time: {pos_time:.3f} seconds")
 
 def create_summary_sheet(wb, match_summary, pattern_print_ranges, total_rows, styles, pattern_label_pairs):
-    """Create match summary sheet"""
+    """Create match summary sheet with positional dispersion"""
     summary_start = time.time()
     
     summary_sheet = wb.create_sheet("Match Summary")
-    summary_headers = ["Regex Pattern", "Matches", "Matched Subsequence Positions"]
+    summary_headers = ["Regex Pattern", "Matches", "Matched Subsequence Positions", "Positional Dispersion (σ)"]
     summary_sheet.append(summary_headers)
 
     # Apply bold style to header cells
@@ -416,10 +505,24 @@ def create_summary_sheet(wb, match_summary, pattern_print_ranges, total_rows, st
         freq_counter = Counter(ranges)
         matched_positions_str = "; ".join([f"{start}-{end} ({freq})" for (start, end), freq in sorted(freq_counter.items())])
 
+        # Calculate positional dispersion (sigma)
+        # Use start positions of all occurrences
+        start_positions = [start for start, end in ranges]
+        
+        if len(start_positions) > 0:
+            # Calculate mean position
+            mean_pos = np.mean(start_positions)
+            # Calculate population standard deviation (ddof=0)
+            sigma = np.std(start_positions, ddof=0)
+            sigma_str = f"{sigma:.2f}"
+        else:
+            sigma_str = "N/A"
+
         summary_sheet.append([
             pattern,
             count,
-            matched_positions_str
+            matched_positions_str,
+            sigma_str
         ])
 
     # Adjust column widths - optimized
@@ -863,91 +966,176 @@ def _parse_domains_by_sequence(res_lines):
 
 
 def _compute_mdcs_summary(motif_hits, domains_by_seq):
-    """
-    Build MDCS summary rows following user requirements.
-
-    motif_hits: list of tuples (seq_index, motif_pattern, m_start_no_gap, m_end_no_gap) (1-based, inclusive)
-    domains_by_seq: dict {seq_index: [(accession, d_start, d_end), ...]} (1-based, inclusive)
-
-    Returns list of rows:
-      [Sequence index, Motif pattern, MDCS(str), Interpretation]
-    """
-    # group motif hits by (seq, motif)
+    """Returns MDCS rows + DCM counters for the second table + motif statistics for third table"""
+    # Group motifs by sequence
     motifs_by_seq = defaultdict(lambda: defaultdict(list))
-    for seq_idx, motif_pat, m_start, m_end in motif_hits or []:
+    
+    # FIXED: 4-element tuple unpacking (no extra "_")
+    for seq_idx, motif_pat, m_start, m_end in motif_hits:
         motifs_by_seq[int(seq_idx)][motif_pat].append((int(m_start), int(m_end)))
 
     rows = []
+    
+    # DCM counters: domain -> motif -> full/partial/total count
+    full_count = defaultdict(lambda: defaultdict(int))
+    partial_count = defaultdict(lambda: defaultdict(int))
+    total_domain_count = defaultdict(lambda: defaultdict(int))  # NEW: total overlaps per domain
+    
+    # Motif statistics: motif -> list of MDCS values and counts
+    motif_mdcs_values = defaultdict(list)
+    motif_outside_count = defaultdict(int)  # NEW: count of outside domain occurrences
+    motif_touching_count = defaultdict(int)  # NEW: count of domain-touching occurrences
+
     for seq_idx in sorted(motifs_by_seq.keys()):
         doms = domains_by_seq.get(seq_idx, [])
         has_domains = len(doms) > 0
 
         for motif_pat in sorted(motifs_by_seq[seq_idx].keys()):
             occs = motifs_by_seq[seq_idx][motif_pat]
-            # Requirement #2: if motif not found, do not show. (Already satisfied by construction.)
 
-            # For each domain accession in this sequence, keep the highest MDCS across:
-            #  - multiple motif occurrences
-            #  - multiple overlaps with that domain
-            best_by_domain = {}  # accession -> best mdcs
-
+            best_by_domain = {}
+            has_outside_occurrence = False
+            
             if has_domains:
                 for acc, d_start, d_end in doms:
                     best = 0.0
                     for m_start, m_end in occs:
-                        motif_len = (m_end - m_start + 1)
+                        motif_len = m_end - m_start + 1
                         if motif_len <= 0:
                             continue
-                        # overlap in gapless coordinates
                         ov = max(0, min(m_end, d_end) - max(m_start, d_start) + 1)
                         mdcs = ov / motif_len
                         if mdcs > best:
                             best = mdcs
                     if best > 0:
                         best_by_domain[acc] = max(best_by_domain.get(acc, 0.0), best)
+                
+                # Check if any occurrence is completely outside all domains
+                for m_start, m_end in occs:
+                    is_outside = True
+                    for acc, d_start, d_end in doms:
+                        ov = max(0, min(m_end, d_end) - max(m_start, d_start) + 1)
+                        if ov > 0:
+                            is_outside = False
+                            break
+                    if is_outside:
+                        has_outside_occurrence = True
+                        break
 
-            # Build MDCS cell value (single cell containing multiple domain:score pairs)
+            # Build MDCS cell and interpretation
             if best_by_domain:
-                # sort by score desc, then accession
                 items = sorted(best_by_domain.items(), key=lambda x: (-x[1], x[0]))
-                mdcs_cell = "; ".join([f"{acc}:{val:.2f}" for acc, val in items])
-                # interpretation
+                mdcs_cell = " , ".join([f"{val:.2f}--{acc}" for acc, val in items])
                 max_val = max(best_by_domain.values())
-                if abs(max_val - 1.0) < 1e-9:
-                    interpretation = "Fully Embedded"
-                else:
-                    interpretation = "Partial Overlap"
+                interpretation = "Fully Embedded" if abs(max_val - 1.0) < 1e-9 else "Partial Overlap"
+                # Count one occurrence per unique domain (with best MDCS for that domain)
+                for domain_acc, mdcs_val in best_by_domain.items():
+                    motif_mdcs_values[motif_pat].append(mdcs_val)
+                    motif_touching_count[motif_pat] += 1  # Count domain-touching occurrences
             else:
                 mdcs_cell = "0"
                 interpretation = "No Domains" if not has_domains else "Outside Domains"
+                # Count as one occurrence with MDCS=0 for this sequence
+                if has_domains:
+                    motif_mdcs_values[motif_pat].append(0.0)
+                    motif_outside_count[motif_pat] += 1  # Count outside domain occurrences
+            
+            # Additional occurrence if motif is also found outside all domains
+            # (even when it overlaps with some domains in the same sequence)
+            if has_domains and has_outside_occurrence and best_by_domain:
+                motif_mdcs_values[motif_pat].append(0.0)
+                motif_outside_count[motif_pat] += 1
 
             rows.append([seq_idx, motif_pat, mdcs_cell, interpretation])
 
-    return rows
+            # Efficient DCM counting
+            for acc, mdcs_val in best_by_domain.items():
+                total_domain_count[acc][motif_pat] += 1  # NEW: Count total overlaps
+                if abs(mdcs_val - 1.0) < 1e-9:
+                    full_count[acc][motif_pat] += 1
+                else:
+                    partial_count[acc][motif_pat] += 1
+
+    return rows, full_count, partial_count, total_domain_count, motif_mdcs_values, motif_outside_count, motif_touching_count
 
 
 def create_mdcs_summary_sheet(wb, motif_hits, res_lines, styles):
-    """Create 'MDCS Summary' sheet (does not alter other pipeline features)."""
+    """MDCS Summary sheet with Motif Embedding in Domain table and MDCS Statistics table"""
     domains_by_seq = _parse_domains_by_sequence(res_lines)
-    rows = _compute_mdcs_summary(motif_hits, domains_by_seq)
+    rows, full_count, partial_count, total_domain_count, motif_mdcs_values, motif_outside_count, motif_touching_count = _compute_mdcs_summary(motif_hits, domains_by_seq)
 
     mdcs_ws = wb.create_sheet("MDCS Summary")
+
+    # First table: MDCS
     headers = ["Sequence", "Motif pattern", "MDCS", "Interpretation"]
     mdcs_ws.append(headers)
-
-    # style header
     for cell in mdcs_ws[1]:
         cell.font = styles['bold_font']
 
     for r in rows:
         mdcs_ws.append(r)
 
-    # widths + alignment
-    for col_idx, column_cells in enumerate(mdcs_ws.columns, 1):
-        max_length = max((len(str(cell.value)) for cell in column_cells if cell.value is not None), default=10)
-        adjusted_width = min(max_length + 2, 60)
-        mdcs_ws.column_dimensions[get_column_letter(col_idx)].width = adjusted_width
+    # 3 blank rows gap
+    mdcs_ws.append([])
+    mdcs_ws.append([])
+    mdcs_ws.append([])
 
+    # Second table: Motif Embedding in Domain (with Count column)
+    dcm_headers = ["Domain", "Motif Pattern", "Motif Embedding in Domain", "Touching This Domain"]
+    mdcs_ws.append(dcm_headers)
+    for cell in mdcs_ws[mdcs_ws.max_row]:
+        cell.font = styles['bold_font']
+
+    # Fill Motif Embedding table
+    all_domains = sorted(set(full_count.keys()) | set(partial_count.keys()))
+    for dom in all_domains:
+        all_motifs = sorted(set(full_count[dom].keys()) | set(partial_count[dom].keys()))
+        for mot in all_motifs:
+            full = full_count[dom][mot]
+            partial = partial_count[dom][mot]
+            total = full + partial
+            if total == 0:
+                continue
+            pct_full = (full / total) * 100
+            pct_partial = (partial / total) * 100
+            dcm_text = f"full={pct_full:.0f}% times , partial={pct_partial:.0f}% times"
+            overlap_count = f"{total_domain_count[dom][mot]} times"  # Total times this motif overlaps this domain
+            mdcs_ws.append([dom, mot, dcm_text, overlap_count])
+
+    # 3 blank rows gap
+    mdcs_ws.append([])
+    mdcs_ws.append([])
+    mdcs_ws.append([])
+
+    # Third table: MDCS Statistics per Motif (with Outside and Touching counts)
+    import numpy as np
+    stats_headers = ["", "Motif Pattern", "Mean MDCS", "Median MDCS", "Occurrences", "Outside Domains", "Touching Domains"]
+    mdcs_ws.append(stats_headers)
+    for cell in mdcs_ws[mdcs_ws.max_row]:
+        cell.font = styles['bold_font']
+
+    # Calculate statistics for each motif
+    for motif_pat in sorted(motif_mdcs_values.keys()):
+        values = motif_mdcs_values[motif_pat]
+        if values:
+            mean_mdcs = np.mean(values)
+            median_mdcs = np.median(values)
+            count = len(values)
+            outside = motif_outside_count.get(motif_pat, 0)
+            touching = motif_touching_count.get(motif_pat, 0)
+            
+            mdcs_ws.append([
+                "",  # First column blank
+                motif_pat,
+                f"{mean_mdcs:.3f}",
+                f"{median_mdcs:.3f}",
+                count,
+                outside,
+                touching
+            ])
+
+    # Final styling
+    adjust_column_widths(mdcs_ws)
     apply_bulk_alignment(mdcs_ws, styles['center_alignment'], min_row=1)
     return True
 
@@ -1055,7 +1243,7 @@ class ProteinAnalysisApp:
         file_frame = ttk.LabelFrame(self.scrollable_frame, text="1. Select Input File", padding="9")
         file_frame.pack(fill=tk.X, pady=(0,10))
         
-        ttk.Label(file_frame, text="Input Excel File:").pack(anchor="w")
+        ttk.Label(file_frame, text="Input File (Excel or FASTA):").pack(anchor="w")
         file_entry_frame = ttk.Frame(file_frame)
         file_entry_frame.pack(fill=tk.X, pady=5)
 
@@ -1167,7 +1355,10 @@ class ProteinAnalysisApp:
     def browse_file(self, target_variable, filetypes=None):
         """Open file dialog and set target variable"""
         if filetypes is None:
-            filetypes = [("Excel files", "*.xlsx *.xls")]
+            filetypes = [("Supported files", "*.xlsx *.xls *.fasta *.fa *.faa"), 
+                        ("Excel files", "*.xlsx *.xls"),
+                        ("FASTA files", "*.fasta *.fa *.faa"),
+                        ("All files", "*.*")]
         
         file_path = filedialog.askopenfilename(filetypes=filetypes)
         if file_path:
@@ -1559,8 +1750,17 @@ class ProteinAnalysisApp:
         
         overall_start = time.time()
         
+        # Detect file type
+        file_ext = os.path.splitext(input_excel_file)[1].lower()
+        is_fasta = file_ext in ['.fasta', '.fa', '.faa']
+        
         print("\n[1/7] Reading and preprocessing data...")
-        df = read_and_preprocess_data(input_excel_file)
+        if is_fasta:
+            print(f"  📄 Detected FASTA format: {os.path.basename(input_excel_file)}")
+            df = read_fasta_file(input_excel_file)
+        else:
+            print(f"  📄 Detected Excel format: {os.path.basename(input_excel_file)}")
+            df = read_and_preprocess_data(input_excel_file)
         
         print("[2/7] Cleaning and processing sequences...")
         process_start = time.time()
@@ -1701,7 +1901,7 @@ class ProteinAnalysisApp:
                 apply_domain_highlights(wb, ws, df, res_lines, leading_columns_count, styles, df_final)
 
                 # NEW: MDCS Summary sheet (only when both motif searching and domain scanning are enabled)
-                if regex_input is not None and motif_hits_all is not None:
+                if regex_input is not None and len(motif_hits_all) > 0:
                     try:
                         create_mdcs_summary_sheet(wb, motif_hits_all, res_lines, styles)
                         print("Finished creating 'MDCS Summary' sheet.")
