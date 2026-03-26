@@ -1,6 +1,4 @@
-┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃                                                    ProteoMapper                                                    ┃
-┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+# ProteoMapper
 
 ProteoMapper is a Python-based desktop application for integrated analysis of protein sequence alignments, motif
 detection, and domain annotation. It provides an intuitive graphical interface to process protein sequences, detect
@@ -10,7 +8,6 @@ visualization.
 The tool is designed for researchers working with protein families, conserved motifs, and domain annotations who need
 reproducible, alignment-centric analysis with structured Excel outputs.
 
-──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
                                                    ✨ Key Features
 
@@ -52,7 +49,6 @@ reproducible, alignment-centric analysis with structured Excel outputs.
  • ⚡ Multiprocessing support for faster computation
  • 📌 Custom position highlighting for functional sites
 
-──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
                                                    📦 Requirements
 
@@ -75,14 +71,13 @@ Tkinter is bundled with most Python installations
  • HMMER 3.x (hmmscan accessible via PATH)
  • Pfam-A database (.hmm file with pressed indices)
 
-──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
                                                    🚀 Installation
 
                                                    Clone Repository
 
 ```bash
-git clone https://github.com/yourusername/proteomapper.git
+git clone https://github.com/sifullah0/proteomapper.git
 cd proteomapper
 ```
 
@@ -98,7 +93,6 @@ pip install -r requirements.txt
 hmmscan -h
 ```
 
-──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
                                                     ▶️ Quick Start
 
@@ -118,7 +112,6 @@ python ProteoMapper.py
  3 Click Proceed
  4 Output Excel generated in same directory as input
 
-──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
                                                    📑 Input Formats
 
@@ -145,7 +138,6 @@ Notes:
  • Non-amino-acid characters automatically removed
  • Multiple identifier columns supported
 
-──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
                                                      FASTA Format
 
 Standard FASTA files with flexible header parsing:
@@ -164,7 +156,6 @@ Parsing behavior:
  • Remaining text → Protein Name
  • Handles UniProt, NCBI, and custom formats
 
-──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
                                                  🔎 Analysis Options
 
@@ -187,7 +178,6 @@ Outputs:
  • Match Summary table with counts and positions
  • Positional dispersion (σ) for each pattern
 
-──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
                                               2. Conservation Threshold
 
 Set minimum percentage (default: 60%) for positional conservation.
@@ -198,7 +188,6 @@ Interpretation:
  • σ = 0 → Strict positional constraint
  • σ > 0 → Positional variability despite sequence conservation
 
-──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
                                                3. Position Highlighting
 
 Highlight specific alignment columns (space-separated, 1-based):
@@ -209,7 +198,6 @@ Highlight specific alignment columns (space-separated, 1-based):
 
 Displays as green fill across all sequences.
 
-──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
                                               4. Domain Scanning (HMMER)
 
 Requirements:
@@ -228,8 +216,6 @@ Outputs:
  • Orange-highlighted domains in alignment
  • Hoverable comments with metadata (E-value, bit score, accession)
  • Domain Summary table
-
-──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
                                     🧮 MDCS Summary (Motif–Domain Coverage Score)
 
@@ -268,7 +254,6 @@ Biological Interpretation:
  • High mean/median MDCS → Domain-associated signatures
  • Complements positional conservation analysis
 
-──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
                                                   🗂 Output Structure
 
@@ -281,18 +266,17 @@ Biological Interpretation:
                                                                                                          
   Sheet               Description                                                                        
  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 
-  First_Sheet         Aligned sequences with motif highlights (sky-blue) and conservation borders (red)  
-  Match_Summary       Motif counts, positions, conservation %, positional dispersion (σ)                 
-  Domain_Highlights   Alignment with orange domain annotations and metadata comments                     
-  Domain_Summary      E-values, bit scores, coordinates for all detected domains                         
-  MDCS_Summary        Three tables: per-sequence, domain-enrichment, motif statistics                    
+  First_Sheet:         Aligned sequences with motif highlights (sky-blue) and conservation borders (red)  
+  Match Summary:       Motif counts, positions, conservation %, positional dispersion (σ)                 
+  Domain_Highlights:   Alignment with orange domain annotations and metadata comments                     
+  Domain Summary:      E-values, bit scores, coordinates for all detected domains                         
+  MDCS Summary:        Three tables: per-sequence, domain-enrichment, motif statistics                    
                                                                                                          
 
                                                    Additional Files
 
  • hitdata.txt → Raw HMMER domain table output
 
-──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
                                                   🛠️ Installing HMMER
 
@@ -333,7 +317,6 @@ Download from: ftp://ftp.ebi.ac.uk/pub/databases/Pfam/current_release/
 hmmpress Pfam-A.hmm
 ```
 
-──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
                                                       🧪 Testing
 
@@ -355,8 +338,6 @@ Test suite includes:
  • Motif detection accuracy
  • Domain scanning integration
  • MDCS calculation correctness
-
-──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
                                                   🧯 Troubleshooting
 
@@ -402,17 +383,7 @@ Common fixes:
  • Check for special characters in headers
  • Verify sequences contain only amino acids and gaps
 
-──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
-                                                     📚 Citation
-
-If you use ProteoMapper in your research, please cite:
-
-```
-[Your manuscript citation will go here]
-```
-
-──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
                                                    🤝 Contributing
 
@@ -424,7 +395,7 @@ Contributions are welcome! Please:
  4 Push to branch (git push origin feature/YourFeature)
  5 Open a Pull Request
 
-──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────
 
 
 ## License
