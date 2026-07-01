@@ -1,0 +1,3 @@
+K[RK]S::Test_Motif_1
+PG::Test_Motif_2
+AA::Test_Motif_3
